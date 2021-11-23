@@ -1,21 +1,20 @@
 //string
-'string'
-"Ala"
+"String1"
+'String2'
+`String3`
 
-`Ale`
 
 //number
-1
+0
+2
 
 //boolean
-false/true
-undefined
+true/false
 
-//array
-[]
+null / undefined
 
 //object
 {}
 
-
-
+//arrays
+[]
