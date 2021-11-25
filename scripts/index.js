@@ -1,20 +1,7 @@
-//string
-"String1"
-'String2'
-`String3`
+function myFirstFunction(a=1, b) {
+    return a;
+}
 
+myFirstFunction();
 
-//number
-0
-2
-
-//boolean
-true/false
-
-null / undefined
-
-//object
-{}
-
-//arrays
-[]
+const myFirstArrowFunction = () => {}
