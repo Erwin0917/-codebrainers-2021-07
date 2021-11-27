@@ -1,35 +1,43 @@
 //zadanie
-// 10 pytań;
-// tabliczka mnożenia od 1 do 10;
+//wytyczne: ilosc subs.; kategorie odznaczen;
+// <100 zapis o tym jak duzo brakuje, 100 = srebro, 1000 = zloto
+// 1000 subs oraz 1000 lajkow = platyna
 
-
+// prompt('Exercise-02');
 
 const firstNumber = Math.round(Math.random() * 10) + 1;
 const secondNumber = Math.round(Math.random() * 10) + 1;
-// 0 - 0.9999
+//0 - 0.9999
 console.log(firstNumber);
+console.log(Math.round(firstNumber));
+console.log(Math.ceil(firstNumber));
+console.log(Math.floor(firstNumber));
+
 console.log(secondNumber);
-// console.log(Math.round(firstNumber));
-// console.log(Math.ceil(firstNumber));
-// console.log(Math.floor(firstNumber));
+console.log(secondNumber);
+console.log(secondNumber);
 
-
-
-const result = prompt(`How much is ${firstNumber} * ${secondNumber}?`);
-const numberResult = parseInt(result);
-
+const result = prompt(message `How much is ${firstNumber} * ${secondNumber}?`);
+numberResult = parseInt(result);
 if (isNaN(numberResult) === true) {
-    alert('It must be a number.');
+    alert("It must be a number.");
 } else {
     const correctResult = firstNumber * secondNumber;
-    if (numberResult === correctResult) {
-        alert('Correct value.');
+    if (result === correctResult) {
+        alert('Correct value.')
     } else {
         alert('Incorrect.');
     }
 }
 
 
+
+
+
+
+
+// const userSubs = prompt('How many subscribers do you have?');
+//
 // console.log(userSubs);
 //
 // if (userSubs == null || isNaN(parseInt(userSubs)) === true) {
