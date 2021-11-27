@@ -42,21 +42,48 @@ for (let i = 1; i <= 49; i++){
 }
 
 
-const numbersDrawn = [];
-for (let i = 0; i < 6; i++){
-    let randomBallNo = getRandomNumberBetween(1, availableNo.length);
 
-    const tempArray = availableNo;
+function getNumbersDrawn(){
+    const numbersDrawn = [];
 
-    console.log("randomBallNo", randomBallNo)
-    const indexRandomBall = availableNo.indexOf(randomBallNo);
-    console.log("indexRandomBall", indexRandomBall)
 
-    if (indexRandomBall !== -1){
-        tempArray.splice(indexRandomBall, 1);
-        numbersDrawn.push(randomBallNo);
-        availableNo = tempArray;
-        console.log("availableNo", availableNo);
+    while ( numbersDrawn.length < 6 ) {
+
+        let randomBallNo = getRandomNumberBetween(1, availableNo.length);
+        console.log("randomBallNo", randomBallNo)
+
+        const indexRandomBall = availableNo.indexOf(randomBallNo);
+
+        console.log("indexRandomBall", indexRandomBall)
+
+        if (indexRandomBall !== -1){
+            availableNo.splice(indexRandomBall, 1);
+            numbersDrawn.push(randomBallNo);
+            console.log("availableNo", availableNo);
+        }
+
     }
+    return numbersDrawn;
+
 }
-console.log("numbersDrawn", numbersDrawn);
+
+function compareArray(arr1,arr2){
+
+    //return true or false
+}
+
+function lotteryGame(){
+    let jackpot = false;
+    let ticketsCount = 0;
+
+    const numberSelected = [1, 45, 21, 49, 37, 7];
+
+    while (jackpot === false) {
+        const numbersDraw = getNumbersDrawn();
+
+        jackpot = compareArray(numbersDraw, numberSelected);
+
+        ticketsCount++;
+    }
+    return ticketsCount
+}
