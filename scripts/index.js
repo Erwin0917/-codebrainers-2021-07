@@ -5,30 +5,48 @@
 
 // prompt('Exercise-02');
 
-const firstNumber = Math.round(Math.random() * 10) + 1;
-const secondNumber = Math.round(Math.random() * 10) + 1;
-//0 - 0.9999
-console.log(firstNumber);
-console.log(Math.round(firstNumber));
-console.log(Math.ceil(firstNumber));
-console.log(Math.floor(firstNumber));
+let correctAnswersCount = 0;
+const numberOfQuestions = 6;
 
-console.log(secondNumber);
-console.log(secondNumber);
-console.log(secondNumber);
+for (let i = 1; i <= numberOfQuestions; i ++) {
+    const firstNumber = Math.floor(Math.random() * 10) + 1;
+    const secondNumber = Math.floor(Math.random() * 10) + 1;
+    //0 - 0.9999
+    console.log(firstNumber);
+    // console.log(Math.round(firstNumber));
+    // console.log(Math.ceil(firstNumber));
+    // console.log(Math.floor(firstNumber));
 
-const result = prompt(message `How much is ${firstNumber} * ${secondNumber}?`);
-numberResult = parseInt(result);
-if (isNaN(numberResult) === true) {
-    alert("It must be a number.");
-} else {
-    const correctResult = firstNumber * secondNumber;
-    if (result === correctResult) {
-        alert('Correct value.')
+    console.log(secondNumber);
+    // console.log(secondNumber);
+    // console.log(secondNumber);
+
+    const result = prompt(`How much is ${firstNumber} * ${secondNumber}?`);
+    numberResult = parseInt(result);
+
+    if (isNaN(numberResult) === true) {
+        alert("It must be a number.");
     } else {
-        alert('Incorrect.');
+        const correctResult = firstNumber * secondNumber;
+        if (numberResult === correctResult) {
+            console.log('Correct value.');
+            correctAnswersCount++;
+        } else {
+            console.log('Incorrect.');
+        }
     }
 }
+console.log(`Your correct answers: ${correctAnswersCount}`);
+const examPassed =  correctAnswersCount / numberOfQuestions;
+if (examPassed > 0.5) {
+    console.log('Congratulations! You have passed exam')
+} else {
+    console.log("So sorry. You didn't pass exam");
+}
+
+
+
+
 
 
 
