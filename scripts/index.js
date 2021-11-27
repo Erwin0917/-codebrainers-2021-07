@@ -1,63 +1,32 @@
-//zadanie
-// 10 pytań;
-// tabliczka mnożenia od 1 do 10;
+// const arr = nonEmptyArr;
 
-let correctAnswersCount = 0;
-// const numberOfQuestions = prompt("How many question do you want to answer?");
-let numberOfQuestions = undefined;
+//Tworzenie tablic
+const firstArr = new Array();
+const emptyArr = [];
+const nonEmptyArr = ['Janek', 'Andrzej', 'Ania'];
 
-function isNumberOfQuestionsCorrect(number){
-    return isNaN(parseInt(number)) === true;
-}
+//Poruszanie sie po tablica
+console.log(nonEmptyArr[0]);
+console.log(nonEmptyArr[2]);
 
-function getRandomNumberBetween(min, max){
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+//Zmiana elementu w tablicy
+nonEmptyArr[0] = ['Zosia', 'Kasia'];
 
-do {
-    numberOfQuestions = prompt("How many question do you want to answer?");
-} while (isNumberOfQuestionsCorrect(numberOfQuestions));
+console.log(nonEmptyArr[0][1]);
 
+//Operacje na końcu tablic
+nonEmptyArr.push('NoweImie');
+nonEmptyArr.pop();
 
-
-for (let i = 1; i <= numberOfQuestions; i ++) {
-    const firstNumber = getRandomNumberBetween(1, 10);
-    const secondNumber = getRandomNumberBetween(1, 10);
-// 0 - 0.9999
-
-    console.log(firstNumber);
-    console.log(secondNumber);
+//Operacje na początku tablic
+nonEmptyArr.unshift('StartEl');
+nonEmptyArr.shift();
 
 
-    const result = prompt(`How much is ${firstNumber} * ${secondNumber}?`);
-    const numberResult = parseInt(result);
-
-    if (isNaN(numberResult) === true) {
-        alert('It must be a number.');
-    } else {
-        const correctResult = firstNumber * secondNumber;
-        if (numberResult === correctResult) {
-            console.log('Correct value.');
-            correctAnswersCount++;
-        } else {
-            console.log('Incorrect.');
-        }
-    }
-}
-
-console.log(`You have ${correctAnswersCount} correct answers, you are a genius`);
-const examPassed = correctAnswersCount / numberOfQuestions;
-if (examPassed > 0.5) {
-    console.log(` you have passed this difficult test.`);
-    } else {
-    console.log('please get back to school');
-}
+//Usuwanie elementów od podanego indexu z określoną ilością elementów
+console.log('nonEmptyArr with splice', nonEmptyArr.splice(1, 2));
+console.log('nonEmptyArr after splice', nonEmptyArr);
 
 
-
-
-
-
-
-
-
+//Sprawdzanie czy istnieje element w tablicy, jesli istnieje to zwraca jego index jeśli nie to -1
+console.log('nonEmptyArr after splice', nonEmptyArr.indexOf('Janek'));
