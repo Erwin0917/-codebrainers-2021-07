@@ -3,10 +3,26 @@
 // tabliczka mnożenia od 1 do 10;
 
 let correctAnswersCount = 0;
-const numberOfQuestions = 6;
+// const numberOfQuestions = prompt("How many question do you want to answer?");
+let numberOfQuestions = undefined;
+
+function isNumberOfQuestionsCorrect(number){
+    return isNaN(parseInt(number)) === true;
+}
+
+function getRandomNumberBetween(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+do {
+    numberOfQuestions = prompt("How many question do you want to answer?");
+} while (isNumberOfQuestionsCorrect(numberOfQuestions));
+
+
+
 for (let i = 1; i <= numberOfQuestions; i ++) {
-    const firstNumber = Math.floor(Math.random() * 10) + 1;
-    const secondNumber = Math.floor(Math.random() * 10) + 1;
+    const firstNumber = getRandomNumberBetween(1, 10);
+    const secondNumber = getRandomNumberBetween(1, 10);
 // 0 - 0.9999
 
     console.log(firstNumber);
