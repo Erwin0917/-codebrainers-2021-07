@@ -41,19 +41,15 @@ for (let i = 1; i <= 49; i++){
     availableNo.push(i);
 }
 
-
-
 function getNumbersDrawn(){
     const numbersDrawn = [];
 
-
-    while ( numbersDrawn.length < 6 ) {
+    while ( numbersDrawn.length < 3 ) {
 
         let randomBallNo = getRandomNumberBetween(1, availableNo.length);
         console.log("randomBallNo", randomBallNo)
 
         const indexRandomBall = availableNo.indexOf(randomBallNo);
-
         console.log("indexRandomBall", indexRandomBall)
 
         if (indexRandomBall !== -1){
@@ -67,80 +63,102 @@ function getNumbersDrawn(){
 
 }
 
-function compareArray(arr1,arr2){
-
-    //return true or false
-}
-
-function lotteryGame(){
-    let jackpot = false;
-    let ticketsCount = 0;
-
-    const numberSelected = [1, 45, 21, 49, 37, 7];
-
-    while (jackpot === false) {
-        const numbersDraw = getNumbersDrawn();
-
-        jackpot = compareArray(numbersDraw, numberSelected);
-
-        ticketsCount++;
-    }
-    return ticketsCount
-}
-
-let newNumbersDrawn = getNumbersDrawn();
-let sortedNumbersDrawn = newNumbersDrawn.sort(function(a, b){return a-b})
-console.log("sortNumbersDrawn: ", sortedNumbersDrawn);
-
-let numberSelected = [1, 45, 21];
-let sortNumberSelected = numberSelected.sort(function(a, b){return a-b})
-console.log("sortNumberSelected: ", sortNumberSelected.sort(function(a, b){return a-b}));
-
-while (sortedNumbersDrawn !== sortNumberSelected) {
-    console.log("The numbers don't match ", "sortedNumbersDrawn: ", sortedNumbersDrawn, "numberSelected: ", sortNumberSelected)
-
-}
-
-//tutaj inny sposób znaleziony w internetach
-// const equals = (a, b) => JSON.stringify(sortedNumbersDrawn) === JSON.stringify(sortNumberSelected);
-// console.log("equals: ", equals())
-
-//czemu to kurwa nie działa skoro to takie proste
-// a = 1
-// b = 1
-// if (a===b){
-//     console.log("true")
+// function lotteryGame(){
+//     let jackpot = false;
+//     let ticketsCount = 0;
+//
+//     const numberSelected = [1, 45, 21, 49, 37, 7];
+//
+//     while (jackpot === false) {
+//         const numbersDraw = getNumbersDrawn();
+//
+//         jackpot = compareArray(numbersDraw, numberSelected);
+//
+//         ticketsCount++;
+//     }
+//     return ticketsCount
 // }
-
-
 
 // sorting drown array by ascending order
-// function sortedNumberDrawn(){
-//     let newNumbersDrawn = getNumbersDrawn();
-//     let sortedNumbersDrawn = newNumbersDrawn.sort(function(a, b){return a-b})
-//     console.log("sortNumbersDrawn: ", sortedNumbersDrawn);
-//
-//     return sortedNumbersDrawn
-// }
-//
-// sortedNumberDrawn()
+function sortedNumbersDrawn(){
+    let newNumbersDrawn = getNumbersDrawn();
+    let sortedNumbersDrawn = newNumbersDrawn.sort(function(a, b){return a-b})
+    console.log("sortedNumbersDrawn: ", sortedNumbersDrawn);
+
+    return sortedNumbersDrawn
+}
+
+sortedNumbersDrawn()
+
+// let newNumbersDrawn = getNumbersDrawn();
+// let sortedNumbersDrawn = newNumbersDrawn.sort(function(a, b){return a-b})
+// console.log("sortNumbersDrawn: ", sortedNumbersDrawn);
+
+// let numberSelected = [1, 45, 21];
+// let sortNumberSelected = numberSelected.sort(function(a, b){return a-b});
+// console.log("sortNumberSelected: ", sortNumberSelected.sort(function(a, b){return a-b}));
 
 
-// function compareArray(array1, array2){
-//
-//     while (sortedNumberDrawn() !== sortNumberSelected){
-//         console.log("not-working", "sortedNumbersDrawn: ", sortedNumbersDrawn, "numberSelected: ", sortNumberSelected )
-//     let newArrayNo = sortedNumberDrawn()
-//     if (sortedNumberDrawn == sortNumberSelected){
-//         let jackpot = false;
-//         console.log("work")
-//         return true
+// without function
+// let ticketsCount = 0;
+// while (sortedNumbersDrawn() !== sortNumberSelected) {
+//     let jackpot = false;
+//     ticketsCount ++;
+//     console.log("The numbers don't match ", "sortedNumbersDrawn: ", sortedNumbersDrawn, "numberSelected: ", sortNumberSelected);
+//     getNumbersDrawn();
+//     if (sortedNumbersDrawn() === sortNumberSelected){
+//         console.log("Congratulations The numbers match ", "sortedNumbersDrawn: ", sortedNumbersDrawn, "numberSelected: ",
+//             sortNumberSelected, "System guessed correct in: ", ticketsCount);
+//         jackpot = true;
 //     }
-//     }
-//     //return true or false
 // }
 
-// compareArray(sortedNumberDrawn(), sortNumberSelected)
+//Tutaj dziadostwo tak jakby pobiera cały czas number i nie wiem nie kończy/uzupełnia działania tablicy.
+let ticketsCount = 0;
+
+sortNumberSelected = [9,17, 34]
+function compareArray(a, b) {
+    while (sortedNumbersDrawn() !== sortNumberSelected) {
+
+        let jackpot = false;
+        ticketsCount++;
+        console.log("The numbers don't match ", "sortedNumbersDrawn: ", sortedNumbersDrawn, "numberSelected: ", sortNumberSelected);
+        getNumbersDrawn();
+        console.log("tutaj powinno pobierac nowy numery")
+        if (sortedNumbersDrawn() === sortNumberSelected) {
+            console.log("Congratulations The numbers match ", "sortedNumbersDrawn: ", sortedNumbersDrawn, "numberSelected: ",
+                sortNumberSelected, "System guessed correct in : ", ticketsCount, "try");
+            jackpot = true;
+        }return jackpot;
+    }return ticketsCount;
+}
+compareArray(sortedNumbersDrawn(), sortNumberSelected)
+
+// console.log("whateva")
+//
+// function lotteryGame(){
+//     let jackpot = false;
+//     let ticketsCount = 0;
+//
+//     const numberSelected = [1, 45, 21, ];
+//     console.log("whateva");
+//
+//     while (jackpot === false) {
+//         // const numbersDrawn = getNumbersDrawn();
+//         //lub też
+//         const numbersDrawn = sortedNumbersDrawn();
+//
+//         if (numbersDrawn === numberSelected){
+//             console.log("hurra")
+//             jackpot = true
+//             ticketsCount++;
+//         }
+//
+//     }
+//     return ticketsCount, jackpot
+// }
+// lotteryGame()
+//z zajęć
 // function lotteryGame(){
 //     let jackpot = false;
 //     let ticketsCount = 0;
@@ -156,3 +174,43 @@ while (sortedNumbersDrawn !== sortNumberSelected) {
 //     }
 //     return ticketsCount
 // }
+
+// function compareArray(arr1,arr2){
+
+//return true or false
+// }
+// function compareArray(array1, array2){
+//
+//     while (sortedNumberDrawn() !== sortNumberSelected){
+//         console.log("not-working", "sortedNumbersDrawn: ", sortedNumbersDrawn, "numberSelected: ", sortNumberSelected )
+//     let newArrayNo = sortedNumberDrawn()
+//     if (sortedNumberDrawn == sortNumberSelected){
+//         let jackpot = false;
+//         console.log("work")
+//         return true
+//     }
+//     }
+//     //return true or false
+// }
+
+//tutaj inny sposób znaleziony w internetach
+// const equals = (a, b) => JSON.stringify(sortedNumbersDrawn) === JSON.stringify(sortNumberSelected);
+// console.log("equals: ", equals())
+
+//czemu to kurwa nie działa skoro to takie proste
+// a = 1;
+// b = 1;
+// if (a===b){
+//     console.log("true")
+// };
+// //tutaj jako funkcja
+// a = 1;
+// b = 1;
+//
+// function compare(a, b){
+//     let flag = false
+//     if (a === b)
+//         flag = true
+//     return console.log("flag is: ", flag)
+// }
+// compare(a, b)
