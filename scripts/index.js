@@ -36,43 +36,58 @@ function getRandomNumberBetween(min = 1, max = 10){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-let availableNo = [];
-for (let i = 1; i <= 49; i++){
-    availableNo.push(i);
-}
-
-
-
 function getNumbersDrawn(){
-    const numbersDrawn = [];
+    let availableNo = [];
 
+    for (let i = 1; i <= 49; i++) {
+        availableNo.push(i);
+    }
+
+    const numbersDrawn = [];
 
     while ( numbersDrawn.length < 6 ) {
 
         let randomBallNo = getRandomNumberBetween(1, availableNo.length);
-        console.log("randomBallNo", randomBallNo)
+        // console.log("randomBallNo", randomBallNo)
 
         const indexRandomBall = availableNo.indexOf(randomBallNo);
-
-        console.log("indexRandomBall", indexRandomBall)
+        // console.log("indexRandomBall", indexRandomBall)
 
         if (indexRandomBall !== -1){
             availableNo.splice(indexRandomBall, 1);
             numbersDrawn.push(randomBallNo);
-            console.log("availableNo", availableNo);
+            // console.log("availableNo", availableNo);
         }
-
     }
     return numbersDrawn;
-
 }
 
-function compareArray(arr1,arr2){
+function compareArray(arr1, arr2) {
+    // console.log('arr1', arr1, arr2);
 
-    //return true or false
+    if (arr1 === undefined || arr2 === undefined) {
+        return false;
+    }
+
+    if (arr1.length !== arr2.length) {
+        return false;
+    }
+
+    arr1 = arr1.sort();
+    arr2 = arr2.sort();
+    // console.log('arr1', arr1, arr2);
+
+
+    arr1 = arr1.toString();
+    arr2 = arr2.toString();
+    // console.log('arr1', arr1, arr2);
+
+    return arr1 === arr2;
 }
 
-function lotteryGame(){
+// console.log(compareArray([8, 2, 9, 1], [22, 11, 1 , 13]))
+
+function lotteryGame() {
     let jackpot = false;
     let ticketsCount = 0;
 
@@ -80,10 +95,10 @@ function lotteryGame(){
 
     while (jackpot === false) {
         const numbersDraw = getNumbersDrawn();
-
         jackpot = compareArray(numbersDraw, numberSelected);
-
         ticketsCount++;
     }
-    return ticketsCount
+
+    return ticketsCount;
 }
+console.log(lotteryGame())
