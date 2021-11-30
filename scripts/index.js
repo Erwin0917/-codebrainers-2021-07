@@ -36,8 +36,15 @@
 
 // numberSelected.reduce();
 
+// 1 - Filtrowanie -> Same imiona *
+// 2 - Filtrowanie -> Zwraca same liczby -> Zwraca podwojone wartości a*a
+// 3 - usunięcie niepoprawnych wartości (Nan, null, undefined)
+// 4 - Imiona kończące się na 'A'
 
-const names = ['Janek', NaN, null, undefined,  'Andrzej', 'Ania', 'Adrian', 'Kamil', 1 , 5, 7, "2", "9"];
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
+
+
+const names = ['Janek', NaN, null, undefined,  'andrzej', 'Ania', 'Adrian', 'kamil', 1 , 5, 7, "2", "9", ['abc', 'Ugh'], {name: 'Jakub', city: 'Gdynia'}, 'Ada', 'Kuba'];
 
 const removeNaN = (name) => {
     console.log(name)
