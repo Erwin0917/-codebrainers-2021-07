@@ -37,21 +37,35 @@
 // numberSelected.reduce();
 
 
-const names = ['Janek', 'Andrzej', 'Ania', 'Adrian', 'Kamil',];
+const names = ['Janek', NaN, null, undefined,  'Andrzej', 'Ania', 'Adrian', 'Kamil', 1 , 5, 7, "2", "9"];
 
+const removeNaN = (name) => {
+    console.log(name)
 
-const filterOutStringsLongerThan5 = (name) => {
-    return name.length > 5;
+    if (typeof name === "number" && isNaN(name)){
+        return false;
+    }
+    return true;
 }
+console.log(names.filter(removeNaN))
+const arrayWithoutNaN = names.filter(removeNaN)
 
-const newArr = names.filter(filterOutStringsLongerThan5).map(name => name + '22');
+//
+//
+// const filterOutStringsLongerThan5 = (name) => {
+//     return name.length > 5;
+// }
+//
+// const newArr = names.filter(filterOutStringsLongerThan5).map(name => name + '22');
+//
+// const clearArr = names.filter(name => name.length > 5);
+//
+// // console.log([3 ,4 ,5].map((elem) => elem * 2))
+//
+// console.log('newArr', newArr);
+//
+// const oldName = 'Ada';
+//
+// filterOutStringsLongerThan5(names);
 
-const clearArr = names.filter(name => name.length > 5);
 
-// console.log([3 ,4 ,5].map((elem) => elem * 2))
-
-console.log('newArr', newArr);
-
-const oldName = 'Ada';
-
-filterOutStringsLongerThan5(names);
