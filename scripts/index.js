@@ -1,29 +1,103 @@
-//zadanie
-//wytyczne: ilosc subs.; kategorie odznaczen;
-// <100 zapis o tym jak duzo brakuje, 100 = srebro, 1000 = zloto
-// 1000 subs oraz 1000 lajkow = platyna
+// // const arr = nonEmptyArr;
+//
+// //Tworzenie tablic
+// const firstArr = new Array();
+// const emptyArr = [];
+// const nonEmptyArr = ['Janek', 'Andrzej', 'Ania'];
+//
+// //Poruszanie sie po tablica
+// console.log(nonEmptyArr[0]);
+// console.log(nonEmptyArr[2]);
+//
+// //Zmiana elementu w tablicy
+// nonEmptyArr[0] = ['Zosia', 'Kasia'];
+//
+// console.log(nonEmptyArr[0][1]);
+//
+// //Operacje na końcu tablic
+// nonEmptyArr.push('NoweImie');
+// nonEmptyArr.pop();
+//
+// //Operacje na początku tablic
+// nonEmptyArr.unshift('StartEl');
+// nonEmptyArr.shift();
+//
+//
+// //Usuwanie elementów od podanego indexu z określoną ilością elementów
+// console.log('nonEmptyArr with splice', nonEmptyArr.splice(1, 2));
+// console.log('nonEmptyArr after splice', nonEmptyArr);
+//
+//
+// //Sprawdzanie czy istnieje element w tablicy, jesli istnieje to zwraca jego index jeśli nie to -1
+// console.log('nonEmptyArr after splice', nonEmptyArr.indexOf('Janek'));
 
-// prompt('Exercise-02');
 
+function getRandomNumberBetween(min = 1, max = 10){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-const userSubs = prompt('How many subscribers do you have?');
-
-console.log(userSubs);
-
-if (userSubs == null || isNaN(parseInt(userSubs)) === true) {
-    alert('you inserted an invalid value.');
-} else {
-    if (userSubs < 100) {
-        const diff = 100 - userSubs;
-        // console.log('you are missing ' + diff + ' subs to get a silver medal.');
-        console.log(`you are missing ${diff} subs to get a silver medal.` );
-    } else if (userSubs >= 100 && userSubs < 1000) {
-        console.log(`you are having ${userSubs} subs, you get a silver medal.` );
-    } else if (userSubs >= 1000) {
-        console.log(`you are having ${userSubs} subs, you get a gold medal.` );
-    }
+let availableNo = [];
+for (let i = 1; i <= 49; i++){
+    availableNo.push(i);
 }
 
 
 
+function getNumbersDrawn(){
+    const numbersDrawn = [];
 
+
+    while ( numbersDrawn.length < 6 ) {
+
+        let randomBallNo = getRandomNumberBetween(1, availableNo.length);
+        // console.log("randomBallNo", randomBallNo)
+
+        const indexRandomBall = availableNo.indexOf(randomBallNo);
+
+        // console.log("indexRandomBall", indexRandomBall)
+
+        if (indexRandomBall !== -1){
+            availableNo.splice(indexRandomBall, 1);
+            numbersDrawn.push(randomBallNo);
+            // console.log("availableNo", availableNo);
+        }
+
+    }
+    return numbersDrawn;
+
+}
+
+function compareArray(arr1,arr2){
+    if (arr1 === arr2) return true;
+    if (arr1 == undefined || arr2== undefined) return false;
+    if (arr1.length !== arr2.length) return false;
+
+    arr1= arr1.sort();
+    arr2= arr2.sort();
+
+    arr1= arr1.toString();
+    arr2 =arr2.toString();
+
+    return arr1 === arr2;
+
+    //return true or false
+}
+
+
+
+function lotteryGame(){
+    let jackpot = false;
+    let ticketsCount = 0;
+
+    const numberSelected = [1, 45, 21, 49, 37, 7];
+
+    while (jackpot === false) {
+        const numbersDraw = getNumbersDrawn();
+
+        jackpot = compareArray(numbersDraw, numberSelected);
+
+        ticketsCount++;
+    }
+    return ticketsCount
+}
+console.log(lotteryGame())
