@@ -32,36 +32,36 @@
 // console.log('nonEmptyArr after splice', nonEmptyArr.indexOf('Janek'));
 
 
-function getRandomNumberBetween(min = 1, max = 10){
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-let availableNo = [];
-for (let i = 1; i <= 49; i++){
-    availableNo.push(i);
-}
-
-function getNumbersDrawn(){
-    const numbersDrawn = [];
-
-    while ( numbersDrawn.length < 3 ) {
-
-        let randomBallNo = getRandomNumberBetween(1, availableNo.length);
-        console.log("randomBallNo", randomBallNo)
-
-        const indexRandomBall = availableNo.indexOf(randomBallNo);
-        console.log("indexRandomBall", indexRandomBall)
-
-        if (indexRandomBall !== -1){
-            availableNo.splice(indexRandomBall, 1);
-            numbersDrawn.push(randomBallNo);
-            console.log("availableNo", availableNo);
-        }
-
-    }
-    return numbersDrawn;
-
-}
+// function getRandomNumberBetween(min = 1, max = 10){
+//     return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
+//
+// let availableNo = [];
+// for (let i = 1; i <= 49; i++){
+//     availableNo.push(i);
+// }
+//
+// function getNumbersDrawn(){
+//     const numbersDrawn = [];
+//
+//     while ( numbersDrawn.length < 3 ) {
+//
+//         let randomBallNo = getRandomNumberBetween(1, availableNo.length);
+//         console.log("randomBallNo", randomBallNo)
+//
+//         const indexRandomBall = availableNo.indexOf(randomBallNo);
+//         console.log("indexRandomBall", indexRandomBall)
+//
+//         if (indexRandomBall !== -1){
+//             availableNo.splice(indexRandomBall, 1);
+//             numbersDrawn.push(randomBallNo);
+//             console.log("availableNo", availableNo);
+//         }
+//
+//     }
+//     return numbersDrawn;
+//
+// }
 
 // function lotteryGame(){
 //     let jackpot = false;
@@ -80,15 +80,15 @@ function getNumbersDrawn(){
 // }
 
 // sorting drown array by ascending order
-function sortedNumbersDrawn(){
-    let newNumbersDrawn = getNumbersDrawn();
-    let sortedNumbersDrawn = newNumbersDrawn.sort(function(a, b){return a-b})
-    console.log("sortedNumbersDrawn: ", sortedNumbersDrawn);
-
-    return sortedNumbersDrawn
-}
-
-sortedNumbersDrawn()
+// function sortedNumbersDrawn(){
+//     let newNumbersDrawn = getNumbersDrawn();
+//     let sortedNumbersDrawn = newNumbersDrawn.sort(function(a, b){return a-b})
+//     console.log("sortedNumbersDrawn: ", sortedNumbersDrawn);
+//
+//     return sortedNumbersDrawn
+// }
+//
+// sortedNumbersDrawn()
 
 // let newNumbersDrawn = getNumbersDrawn();
 // let sortedNumbersDrawn = newNumbersDrawn.sort(function(a, b){return a-b})
@@ -114,25 +114,25 @@ sortedNumbersDrawn()
 // }
 
 //Tutaj dziadostwo tak jakby pobiera cały czas number i nie wiem nie kończy/uzupełnia działania tablicy.
-let ticketsCount = 0;
-
-sortNumberSelected = [9,17, 34]
-function compareArray(a, b) {
-    while (sortedNumbersDrawn() !== sortNumberSelected) {
-
-        let jackpot = false;
-        ticketsCount++;
-        console.log("The numbers don't match ", "sortedNumbersDrawn: ", sortedNumbersDrawn, "numberSelected: ", sortNumberSelected);
-        getNumbersDrawn();
-        console.log("tutaj powinno pobierac nowy numery")
-        if (sortedNumbersDrawn() === sortNumberSelected) {
-            console.log("Congratulations The numbers match ", "sortedNumbersDrawn: ", sortedNumbersDrawn, "numberSelected: ",
-                sortNumberSelected, "System guessed correct in : ", ticketsCount, "try");
-            jackpot = true;
-        }return jackpot;
-    }return ticketsCount;
-}
-compareArray(sortedNumbersDrawn(), sortNumberSelected)
+// let ticketsCount = 0;
+//
+// sortNumberSelected = [9,17, 34]
+// function compareArray(a, b) {
+//     while (sortedNumbersDrawn() !== sortNumberSelected) {
+//
+//         let jackpot = false;
+//         ticketsCount++;
+//         console.log("The numbers don't match ", "sortedNumbersDrawn: ", sortedNumbersDrawn, "numberSelected: ", sortNumberSelected);
+//         getNumbersDrawn();
+//         console.log("tutaj powinno pobierac nowy numery")
+//         if (sortedNumbersDrawn() === sortNumberSelected) {
+//             console.log("Congratulations The numbers match ", "sortedNumbersDrawn: ", sortedNumbersDrawn, "numberSelected: ",
+//                 sortNumberSelected, "System guessed correct in : ", ticketsCount, "try");
+//             jackpot = true;
+//         }return jackpot;
+//     }return ticketsCount;
+// }
+// compareArray(sortedNumbersDrawn(), sortNumberSelected)
 
 // console.log("whateva")
 //
@@ -214,3 +214,85 @@ compareArray(sortedNumbersDrawn(), sortNumberSelected)
 //     return console.log("flag is: ", flag)
 // }
 // compare(a, b)
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//                                          HOMEWORK 2
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+//
+// numberSelected.forEach(function (a) {
+//     ticket = ticket + a;
+// });
+// const arr = numberSelected.map(function (a) {
+//     return 2 + 2;
+// });
+// numberSelected.sort(function (a, b) {
+//     if (a - b) {
+//         return 1;
+//     }
+//
+//     if (b - a) {
+//         return -1;
+//     }
+//
+//     if (a === b) {
+//         return 0;
+//     }
+// });
+// const arr2 = numberSelected.filter(function (a) {
+//     if(a === 45) {
+//         return true;
+//     }
+// });
+//
+// console.log(arr2)
+//
+// const arr3 = numberSelected.some(function (a) {
+//     if (a === 21) {
+//         return true;
+//     }
+// });
+//
+// console.log(arr3);
+
+// numberSelected.reduce();
+
+// 1 - Filtrowanie -> Same imiona *
+// 2 - Filtrowanie -> Zwraca same liczby -> Zwraca podwojone wartości a*a
+// 3 - usunięcie niepoprawnych wartości (Nan, null, undefined)
+// 4 - Imiona kończące się na 'A'
+
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
+
+
+const names = ['Janek', NaN, null, undefined,  'andrzej', 'Ania', 'Adrian', 'kamil', 1 , 5, 7, "2", "9", ['abc', 'Ugh'], {name: 'Jakub', city: 'Gdynia'}, 'Ada', 'Kuba'];
+
+const removeNaN = (name) => {
+    console.log(name)
+
+    if (typeof name === "number" && isNaN(name)){
+        return false;
+    }
+    return true;
+}
+console.log(names.filter(removeNaN))
+const arrayWithoutNaN = names.filter(removeNaN)
+
+//
+//
+// const filterOutStringsLongerThan5 = (name) => {
+//     return name.length > 5;
+// }
+//
+// const newArr = names.filter(filterOutStringsLongerThan5).map(name => name + '22');
+//
+// const clearArr = names.filter(name => name.length > 5);
+//
+// // console.log([3 ,4 ,5].map((elem) => elem * 2))
+//
+// console.log('newArr', newArr);
+//
+// const oldName = 'Ada';
+//
+// filterOutStringsLongerThan5(names);
