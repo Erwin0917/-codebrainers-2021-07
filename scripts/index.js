@@ -121,8 +121,8 @@ const names = ['Janek', NaN, null, undefined,  'andrzej', 'Ania', 'Adrian', 'kam
 
 // 1 - Filtrowanie -> Same imiona *
 const remove1 = (name) => {
-    console.log(name)
-    if (typeof name === "string" && !isNaN(name) || typeof name === "number" && !isNaN(name) || name === null){
+    // console.log(name)
+    if (!isNaN(name) ){
         return false;
     }
 
@@ -130,19 +130,20 @@ const remove1 = (name) => {
         return true;
     }
 }
+// console.log(names.filter(remove1))
 
 // 2 - Filtrowanie -> Zwraca same liczby -> Zwraca podwojone wartości a*a
 const remove2 = (name) => {
-    console.log(name)
+    // console.log(name)
 
-    if (typeof name === "number" && isNaN(name) || typeof name === "string" ){
+    if (isNaN(name) || typeof name === "string"){
         return false;
     }
 
     return true;
 }
-const doubledNumbers = names.filter(remove2).map(n => n*n);
-console.log(doubledNumbers)
+// const doubledNumbers = names.filter(remove2).map(n => n*n);
+// console.log(doubledNumbers)
 
 
 // 4 - Imiona kończące się na 'A'
@@ -157,11 +158,22 @@ const remove4 = (arr) => {
     }
     return arr2;
 }
+
+const remove4b = (arg) => {
+    if (typeof arg === "string" && isNaN(arg)){
+        if (arg.slice(-1) === "a" ) {
+            return true;
+        }
+    }
+}
+// console.log(remove4(names))
+
+console.log(names.filter(remove4b))
+
+
 // console.log(names.filter(removeNaN))
 // const arrayWithoutNaN = names.filter(removeNaN)
 
-// console.log(remove4(names))
-// console.log(names.filter(remove1))
 
 
 // 2
