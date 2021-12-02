@@ -221,14 +221,27 @@
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //
+// let ticket
+// numberSelected = [1, 45, 21, 49, 37, 7]
 // numberSelected.forEach(function (a) {
-//     ticket = ticket + a;
+//     ticket = ticket + a
+//     console.log("ticket: ", ticket)
 // });
-// const arr = numberSelected.map(function (a) {
+
+// numberSelected = [1, 45, 21, 49, 37, 7]
+
+// numberSelected.forEach(element => console.log("This is :", element))
+// numberSelected.forEach(element => console.log("This is new:", element + 5))
+
+// numberSelected = [1, 45, 21, 49, 37, 7]
+
+// let arr = numberSelected.map(function (a) {
+//
 //     return 2 + 2;
 // });
-// numberSelected.sort(function (a, b) {
+// let a = numberSelected.sort(function (a, b) {
 //     if (a - b) {
+//         console.log(a, b)
 //         return 1;
 //     }
 //
@@ -242,6 +255,8 @@
 // });
 // const arr2 = numberSelected.filter(function (a) {
 //     if(a === 45) {
+//         console.log("kaboom")
+//
 //         return true;
 //     }
 // });
@@ -256,34 +271,37 @@
 //
 // console.log(arr3);
 
+// const someArr = [1, 4, 6, 8]
+//
+// const map1 = someArr.map(x => x *2);
+// console.log(map1)
+
+
 // numberSelected.reduce();
 
-// 1 - Filtrowanie -> Same imiona *
-// 2 - Filtrowanie -> Zwraca same liczby -> Zwraca podwojone wartości a*a
-// 3 - usunięcie niepoprawnych wartości (Nan, null, undefined)
-// 4 - Imiona kończące się na 'A'
 
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
 
 
-const names = ['Janek', NaN, null, undefined,  'andrzej', 'Ania', 'Adrian', 'kamil', 1 , 5, 7, "2", "9", ['abc', 'Ugh'], {name: 'Jakub', city: 'Gdynia'}, 'Ada', 'Kuba'];
-
-const removeNaN = (name) => {
-    console.log(name)
-
-    if (typeof name === "number" && isNaN(name)){
-        return false;
-    }
-    return true;
-}
-console.log(names.filter(removeNaN))
-const arrayWithoutNaN = names.filter(removeNaN)
-
+// const names = ['Janek', NaN,    'andrzej', 'Ania', 'Adrian', 'kamil', 1 , 5, 7, "2", "9", ['abc', 'Ugh'], {name: 'Jakub', city: 'Gdynia'}, 'Ada', 'Kuba', ];
+//
+// const removeNaN = (name) => {
+//     // console.log(name)
+//
+//     if (typeof name === "number" && isNaN(name)){
+//         return false;
+//     }
+//     return true;
+// }
+// // console.log(names.filter(removeNaN))
+// const arrayWithoutNaN = names.filter(removeNaN)
 //
 //
 // const filterOutStringsLongerThan5 = (name) => {
 //     return name.length > 5;
 // }
+//
+// console.log(filterOutStringsLongerThan5(names))
 //
 // const newArr = names.filter(filterOutStringsLongerThan5).map(name => name + '22');
 //
@@ -296,3 +314,63 @@ const arrayWithoutNaN = names.filter(removeNaN)
 // const oldName = 'Ada';
 //
 // filterOutStringsLongerThan5(names);
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//                                          HOMEWORK 2 - solution
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+const names = ['Janek', NaN,  undefined,  'andrzej', 'Ania', 'Adrian', 'kamil', 1 , 5, 7, "2", "9", ['abc', 'Ugh'], {name: 'Jakub', city: 'Gdynia'}, 'Ada', 'Kuba', null];
+
+// 1 - Filtrowanie -> Same imiona *
+
+// function remove(names){
+//     const newArr = names.filter(e => typeof e === 'string' && e !== '' && e !== '2' && e !== '9');
+//
+//     return console.log(newArr);
+// };
+// remove(names);
+//
+// //funkcja strzałkowa
+// newArr1s = names.filter(e => typeof e === 'string' && e !== '' && e !== '2' && e !== '9');
+// console.log("newArr1s", newArr1s);
+
+
+// 2 - Filtrowanie -> Zwraca same liczby -> Zwraca podwojone wartości a*a
+
+
+// let filtered = names.filter(Number.isInteger);
+// console.log(filtered);
+//
+// const multyply = filtered.map(x => x*2);
+// console.log(multyply);
+//
+// const tryInOne = (names) => {
+//     let filtered2 = names.filter(Number.isInteger);
+//     console.log(filtered2);
+//
+//     const multyply2 = filtered2.map(x => x*2);
+//     console.log(multyply2);
+// }
+// tryInOne(names)
+
+// 3 - usunięcie niepoprawnych wartości (Nan, null, undefined)
+
+// const removeUnnecessaryValue = (names) => {
+//     let mostWantedValue = names.filter(e => e !== undefined && e !== null && isNaN(e))
+//     return mostWantedValue
+// }
+//
+// console.log(removeUnnecessaryValue(names))
+
+// 4 - Imiona kończące się na 'A'
+
+// const wordsFinishWithA = (name) => {
+//     const newArr = names.filter(e => typeof e === 'string')
+//     const finishWithA = if(newArr)
+//     console.log(newArr)
+// }
+// wordsFinishWithA(names)
+
+console.log(names.endsWith('a', ))
+// typeof name === "number
+
