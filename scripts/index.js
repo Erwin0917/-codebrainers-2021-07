@@ -1,40 +1,36 @@
+// // const arr = nonEmptyArr;
 //
-// numberSelected.forEach(function (a) {
-//     ticket = ticket + a;
-// });
-// const arr = numberSelected.map(function (a) {
-//     return 2 + 2;
-// });
-// numberSelected.sort(function (a, b) {
-//     if (a - b) {
-//         return 1;
-//     }
+// //Tworzenie tablic
+// const firstArr = new Array();
+// const emptyArr = [];
+// const nonEmptyArr = ['Janek', 'Andrzej', 'Ania'];
 //
-//     if (b - a) {
-//         return -1;
-//     }
+// //Poruszanie sie po tablica
+// console.log(nonEmptyArr[0]);
+// console.log(nonEmptyArr[2]);
 //
-//     if (a === b) {
-//         return 0;
-//     }
-// });
-// const arr2 = numberSelected.filter(function (a) {
-//     if(a === 45) {
-//         return true;
-//     }
-// });
+// //Zmiana elementu w tablicy
+// nonEmptyArr[0] = ['Zosia', 'Kasia'];
 //
-// console.log(arr2)
+// console.log(nonEmptyArr[0][1]);
 //
-// const arr3 = numberSelected.some(function (a) {
-//     if (a === 21) {
-//         return true;
-//     }
-// });
+// //Operacje na końcu tablic
+// nonEmptyArr.push('NoweImie');
+// nonEmptyArr.pop();
 //
-// console.log(arr3);
+// //Operacje na początku tablic
+// nonEmptyArr.unshift('StartEl');
+// nonEmptyArr.shift();
+//
+//
+// //Usuwanie elementów od podanego indexu z określoną ilością elementów
+// console.log('nonEmptyArr with splice', nonEmptyArr.splice(1, 2));
+// console.log('nonEmptyArr after splice', nonEmptyArr);
+//
+//
+// //Sprawdzanie czy istnieje element w tablicy, jesli istnieje to zwraca jego index jeśli nie to -1
+// console.log('nonEmptyArr after splice', nonEmptyArr.indexOf('Janek'));
 
-// numberSelected.reduce();
 
 // 1 - Filtrowanie -> Same imiona *
 // 2 - Filtrowanie -> Zwraca same liczby -> Zwraca podwojone wartości a*a
@@ -46,33 +42,53 @@
 
 const names = ['Janek', NaN, null, undefined,  'andrzej', 'Ania', 'Adrian', 'kamil', 1 , 5, 7, "2", "9", ['abc', 'Ugh'], {name: 'Jakub', city: 'Gdynia'}, 'Ada', 'Kuba'];
 
-const removeNaN = (name) => {
-    console.log(name)
 
-    if (typeof name === "number" && isNaN(name)){
-        return false;
-    }
-    return true;
+// 1 - Filtrowanie -> Same imiona *
+const onlyNames = (name) => {
+    return (!isNaN(name)) ? false : typeof name === "string" || !isNaN(name);
+
+    // if (!isNaN(name) ){
+    //     return false;
+    // }
+    //
+    // if (typeof name === "string" || !isNaN(name)){
+    //     return true;
+    // }
 }
-console.log(names.filter(removeNaN))
-const arrayWithoutNaN = names.filter(removeNaN)
+console.log(names.filter(onlyNames));
 
-//
-//
-// const filterOutStringsLongerThan5 = (name) => {
-//     return name.length > 5;
+// 2 - Filtrowanie -> Zwraca same liczby -> Zwraca podwojone wartości a*a
+const onlyNumbers = name => isNaN(name) || typeof name === "string" ? false : true;
+
+// onlyNumbers === remove2Old;
+// const remove2Old = name => {
+//     if (isNaN(name) || typeof name === "string") {
+//         return false;
+//     }
+//     return true;
 // }
-//
-// const newArr = names.filter(filterOutStringsLongerThan5).map(name => name + '22');
-//
-// const clearArr = names.filter(name => name.length > 5);
-//
-// // console.log([3 ,4 ,5].map((elem) => elem * 2))
-//
-// console.log('newArr', newArr);
-//
-// const oldName = 'Ada';
-//
-// filterOutStringsLongerThan5(names);
+
+const double = number => number * number;
+const doubledNumbers = names.filter(onlyNumbers).map(double);
+// console.log(doubledNumbers);
+
+
+// 4 - Imiona kończące się na 'A'
+const namesWithAOnEnd = arg => {
+    if (typeof arg === "string" && isNaN(arg)) {
+        if (arg.slice(-1) === "a" ) {
+            return true;
+        }
+    }
+}
+
+// console.log(names.filter(namesWithAOnEnd))
+
+
+const newArr = [1, 2, 3].map(e => {return e});
+const newArr2 = [1, 2, 3].filter(() => {return true});
+
+
+
 
 
