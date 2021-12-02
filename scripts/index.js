@@ -118,16 +118,49 @@
 
 const names = ['Janek', NaN, null, undefined,  'andrzej', 'Ania', 'Adrian', 'kamil', 1 , 5, 7, "2", "9", ['abc', 'Ugh'], {name: 'Jakub', city: 'Gdynia'}, 'Ada', 'Kuba'];
 
-const removeNaN = (name) => {
+const remove2 = (name) => {
     console.log(name)
 
-    if (typeof name === "number" && isNaN(name)){
+    if (typeof name === "number" && isNaN(name) || typeof name === "string" ){
         return false;
     }
+
     return true;
 }
-console.log(names.filter(removeNaN))
-const arrayWithoutNaN = names.filter(removeNaN)
+const remove1 = (name) => {
+    console.log(name)
+    if (typeof name === "string" && !isNaN(name) || typeof name === "number" && !isNaN(name) || name === null){
+        return false;
+    }
+
+    if (typeof name === "string" || !isNaN(name)){
+        return true;
+    }
+
+
+}
+const remove4 = (arr) => {
+    let arr2 = [];
+    for (let i = 0; i < arr.length; i++) {
+            if (arr[i] != null || arr[i] != undefined){
+                if (arr[i][arr[i].length- 1] === "a" ){
+                arr2.push(arr[i]);
+                }
+            }
+    }
+    return arr2;
+}
+// console.log(names.filter(removeNaN))
+// const arrayWithoutNaN = names.filter(removeNaN)
+
+console.log(remove4(names))
+// const doubledNumbers = names.filter(remove2).map(n => n*2);
+// console.log(names.filter(remove1))
+
+// console.log(doubledNumbers)
+
+// 2
+
 
 //
 //
