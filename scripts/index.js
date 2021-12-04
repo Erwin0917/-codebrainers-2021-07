@@ -12,15 +12,23 @@ const car = {
 // * dorobic nowe, wedle uznania, wzorujac sie na rzeczywistych samochodach
 
 class Car {
-    constructor(color = 'black', maximumSpeed = 230, wheels = 4) {
+    constructor(color = 'black', maximumSpeed, wheels) {
         this.color = color;
-        this.maximumSpeed = maximumSpeed;
-        this.numberOfWheels = wheels;
+        this.maximumSpeed = this.setNumericValue(maximumSpeed, 230);
+        this.numberOfWheels = this.setNumericValue(wheels, 4);
         this.currentSpeed = 0;
     }
 
+    isNumericValue(value){
+        return typeof value === "number" && !isNaN(value);
+    }
+
+    setNumericValue(value, defaultValue = 0){
+        return this.isNumericValue(value) ? value: defaultValue;
+    }
+
     setCurrentSpeed(currentSpeed = 0){
-        if (typeof currentSpeed === "number"){
+        if (this.isNumericValue(currentSpeed)){
             if (currentSpeed > this.maximumSpeed || currentSpeed < 0){
                 console.log('invalid number, it can\'t be below zero nor greater than maximum speed.');
             }else{
@@ -45,7 +53,7 @@ class Car {
     }
 
     accelerate = function (howMuch) {
-        if (typeof howMuch === "number"){
+        if (this.isNumericValue(howMuch)){
             const higherSpeed = this.currentSpeed + howMuch;
             if (higherSpeed <= this.maximumSpeed){
                 this.setCurrentSpeed(higherSpeed);
