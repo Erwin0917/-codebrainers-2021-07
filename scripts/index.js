@@ -1,3 +1,12 @@
+const onButtonClick = () => {
+    console.log('Action');
+}
+const button = document.querySelector('#button');
+button.addEventListener('click', onButtonClick);
+
+console.log(button);
+
+
 class Person {
     constructor() {
         this.hitPoints = 0;
@@ -39,4 +48,3 @@ console.log('Villain instanceof Villain:', villain instanceof Villain);
 
 hero.isAlive();
 villain.isAlive();
-
