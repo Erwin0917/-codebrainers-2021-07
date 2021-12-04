@@ -20,7 +20,15 @@ class Car {
     }
 
     setCurrentSpeed(currentSpeed = 0){
-        this.currentSpeed = currentSpeed;
+        if (typeof currentSpeed === "number"){
+            if (currentSpeed > this.maximumSpeed || currentSpeed < 0){
+                console.log('invalid number, it can\'t be below zero nor greater than maximum speed.');
+            }else{
+                this.currentSpeed = currentSpeed;
+                }
+        }
+        console.log('insert number');
+
     }
 
     setColor = function(newColor = 'black') {
@@ -37,8 +45,12 @@ class Car {
     }
 
     accelerate = function (howMuch) {
-        const higherSpeed = this.currentSpeed + howMuch;
-        this.setCurrentSpeed(higherSpeed);
+        if (typeof howMuch === "number"){
+            const higherSpeed = this.currentSpeed + howMuch;
+            if (higherSpeed <= this.maximumSpeed){
+                this.setCurrentSpeed(higherSpeed);
+            }
+        }
     }
 
     slowdown = function (howMuch) {
@@ -51,7 +63,7 @@ const bmw = new Car('black');
 const open = new Car();
 
 console.log(bmw.currentSpeed);
-bmw.slowdown(40);
+bmw.setCurrentSpeed('-40');
 console.log(bmw.currentSpeed);
 
 
