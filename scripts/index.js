@@ -1,3 +1,7 @@
+function getRandomNumberBetween(min = 1, max = 10){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const onButtonClick = () => {
     console.log('Action');
 }
@@ -16,13 +20,23 @@ class Person {
     isAlive() {
         return this.hitPoints > 0;
     }
+
+    setHitPoints(hitPoints) {
+        this.hitPoints = hitPoints >= 0 ? hitPoints : 0;
+    }
+
+
     attack(target, power) {
-        if (target.hitPoints > 0) {
-            target.hitPoints = target.hitPoints - power;
+        if(!(target instanceof Person)) {
+            return false;
         }
+        const hitPointsAfterAttack = target.hitPoints - power;
+        target.setHitPoints(hitPointsAfterAttack);
+        return target.hitPoints;
 
     }
 }
+
 
 class Hero extends Person {
     constructor() {
@@ -35,7 +49,7 @@ class Hero extends Person {
 class Villain extends Person {
     constructor() {
         super();
-        this.hitPoints = 50;
+        this.hitPoints = 100;
         this.strength = 20;
     }
 }
@@ -44,19 +58,12 @@ class Villain extends Person {
 const hero = new Hero();
 const villain = new Villain();
 
-console.log(villain.hitPoints)
-hero.attack(villain,15);
-console.log(villain.hitPoints)
 
 
-console.log(hero.hitPoints)
-villain.attack(hero,40);
-villain.attack(hero,40);
-villain.attack(hero,15);
-villain.attack(hero,15);
-console.log(hero.hitPoints)
+while (hero.isAlive() && villain.isAlive()) {
+    hero.attack(villain, getRandomNumberBetween(2, 35));
+    villain.attack(hero, getRandomNumberBetween(2, 31));
 
-
-
-hero.isAlive();
-villain.isAlive();
+}
+console.log(hero.hitPoints);
+console.log(villain.hitPoints);
