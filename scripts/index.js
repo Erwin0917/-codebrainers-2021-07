@@ -1,10 +1,10 @@
 const onButtonClick = () => {
     console.log('Action');
 }
-const button = document.querySelector('#button');
-button.addEventListener('click', onButtonClick);
+// const button = document.querySelector('#button');
+// button.addEventListener('click', onButtonClick);
 
-console.log(button);
+// console.log(button);
 
 
 class Person {
@@ -15,6 +15,12 @@ class Person {
 
     isAlive() {
         return this.hitPoints > 0;
+    }
+    attack(target, power) {
+        if (target.hitPoints > 0) {
+            target.hitPoints = target.hitPoints - power;
+        }
+
     }
 }
 
@@ -38,11 +44,17 @@ class Villain extends Person {
 const hero = new Hero();
 const villain = new Villain();
 
-console.log('hero instanceof Person:', hero instanceof Hero);
-console.log('hero instanceof Villain:', hero instanceof Villain);
+console.log(villain.hitPoints)
+hero.attack(villain,15);
+console.log(villain.hitPoints)
 
-console.log('Villain instanceof Person:', villain instanceof Hero);
-console.log('Villain instanceof Villain:', villain instanceof Villain);
+
+console.log(hero.hitPoints)
+villain.attack(hero,40);
+villain.attack(hero,40);
+villain.attack(hero,15);
+villain.attack(hero,15);
+console.log(hero.hitPoints)
 
 
 
