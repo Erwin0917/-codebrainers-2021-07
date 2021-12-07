@@ -6,121 +6,124 @@
           content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
     <!-- latest -->
-    <link href='https://unpkg.com/nes.css@latest/css/nes.min.css' rel='stylesheet' />
+    <link href='https://unpkg.com/nes.css@latest/css/nes.min.css' rel='stylesheet'/>
     <!-- core style only -->
-    <link href='https://unpkg.com/nes.css/css/nes-core.min.css' rel='stylesheet' />
+    <link href='https://unpkg.com/nes.css/css/nes-core.min.css' rel='stylesheet'/>
     <title>JS Basic game </title>
     <link rel='stylesheet' href='./style/main.css'>
 </head>
 <body>
-<div class='gameBoard'>
-    <div class='nes-container with-title is-centered'>
-        <p class='title'>Team A</p>
-        <div class='nes-container is-rounded'>
+<div class='gameOne'>
+
+    <div class='gameBoard'>
+        <div class='nes-container with-title is-centered'>
+            <p class='title'>Team A</p>
+            <div class='nes-container is-rounded'>
 
 
-            <div class='personWrapper'>
-                <div class='avatar'></div>
-                <div class='personName'>Name</div>
-                <div class='personWeapon'>Weapon name</div>
-                <div class='personStrength'>Strength</div>
-                <div class='personHitPoints'>Hit points 100/100</div>
-                <progress class='nes-progress is-error' value='10' max='100'></progress>
+                <div class='personWrapper'>
+                    <div class='avatar'></div>
+                    <div class='personName'>Name</div>
+                    <div class='personWeapon'>Weapon name</div>
+                    <div class='personStrength'>Strength</div>
+                    <div class='personHitPoints'>Hit points 100/100</div>
+                    <progress class='nes-progress is-error' value='10' max='100'></progress>
+                </div>
+
+                <div class='personWrapper'>
+                    <div class='avatar'></div>
+                    <div class='personName'>Name</div>
+                    <div class='personWeapon'>Weapon name</div>
+                    <div class='personStrength'>Strength</div>
+                    <div class='personHitPoints'>Hit points 100/100</div>
+                    <progress class='nes-progress is-error' value='10' max='100'></progress>
+                </div>
+
+
+                <div class='personWrapper'>
+                    <div class='avatar'></div>
+                    <div class='personName'>Name</div>
+                    <div class='personWeapon'>Weapon name</div>
+                    <div class='personStrength'>Strength</div>
+                    <div class='personHitPoints'>Hit points 100/100</div>
+                    <progress class='nes-progress is-error' value='90' max='100'></progress>
+                </div>
+
+
             </div>
+        </div>
 
-            <div class='personWrapper'>
-                <div class='avatar'></div>
-                <div class='personName'>Name</div>
-                <div class='personWeapon'>Weapon name</div>
-                <div class='personStrength'>Strength</div>
-                <div class='personHitPoints'>Hit points 100/100</div>
-                <progress class='nes-progress is-error' value='10' max='100'></progress>
+        <div class='nes-container with-title is-centered'>
+            <p class='title'>Team B</p>
+
+            <div class='nes-container is-rounded'>
+
+                <div class='personWrapper'>
+                    <div class='avatar'></div>
+                    <div class='personName'>Name</div>
+                    <div class='personWeapon'>Weapon name</div>
+                    <div class='personStrength'>Strength</div>
+                    <div class='personHitPoints'>Hit points 100/100</div>
+                    <progress class='nes-progress is-error' value='100' max='100'></progress>
+                </div>
+
+                <div class='personWrapper'>
+                    <div class='avatar'></div>
+                    <div class='personName'>Name</div>
+                    <div class='personWeapon'>Weapon name</div>
+                    <div class='personStrength'>Strength</div>
+                    <div class='personHitPoints'>Hit points 100/100</div>
+                    <progress class='nes-progress is-error' value='10' max='100'></progress>
+                </div>
+
+
+                <div class='personWrapper'>
+                    <div class='avatar'></div>
+                    <div class='personName'>Name</div>
+                    <div class='personWeapon'>Weapon name</div>
+                    <div class='personStrength'>Strength</div>
+                    <div class='personHitPoints'>Hit points 100/100</div>
+                    <progress class='nes-progress is-error' value='10' max='100'></progress>
+                </div>
+
+
             </div>
-
-
-            <div class='personWrapper'>
-                <div class='avatar'></div>
-                <div class='personName'>Name</div>
-                <div class='personWeapon'>Weapon name</div>
-                <div class='personStrength'>Strength</div>
-                <div class='personHitPoints'>Hit points 100/100</div>
-                <progress class='nes-progress is-error' value='90' max='100'></progress>
-            </div>
-
-
         </div>
     </div>
 
-    <div class='nes-container with-title is-centered'>
-        <p class='title'>Team B</p>
-
-        <div class='nes-container is-rounded'>
-
-            <div class='personWrapper'>
-                <div class='avatar'></div>
-                <div class='personName'>Name</div>
-                <div class='personWeapon'>Weapon name</div>
-                <div class='personStrength'>Strength</div>
-                <div class='personHitPoints'>Hit points 100/100</div>
-                <progress class='nes-progress is-error' value='100' max='100'></progress>
+    <div class='gameControlWrapper'>
+        <div class='inputsWrapper'>
+            <div class='nes-field'>
+                <label for='name'>Name</label>
+                <input type='text' id='name' class='nes-input'>
             </div>
 
-            <div class='personWrapper'>
-                <div class='avatar'></div>
-                <div class='personName'>Name</div>
-                <div class='personWeapon'>Weapon name</div>
-                <div class='personStrength'>Strength</div>
-                <div class='personHitPoints'>Hit points 100/100</div>
-                <progress class='nes-progress is-error' value='10' max='100'></progress>
+            <div class='nes-field'>
+                <label for='strength'>Strength</label>
+                <input type='text' id='strength' class='nes-input'>
             </div>
 
-
-            <div class='personWrapper'>
-                <div class='avatar'></div>
-                <div class='personName'>Name</div>
-                <div class='personWeapon'>Weapon name</div>
-                <div class='personStrength'>Strength</div>
-                <div class='personHitPoints'>Hit points 100/100</div>
-                <progress class='nes-progress is-error' value='10' max='100'></progress>
+            <div class='nes-field'>
+                <label for='weapon'>Weapon</label>
+                <input type='text' id='weapon' class='nes-input'>
             </div>
 
-
-        </div>
-    </div>
-</div>
-
-<div class='gameControlWrapper'>
-    <div class='inputsWrapper'>
-        <div class='nes-field'>
-            <label for='name'>Name</label>
-            <input type='text' id='name' class='nes-input'>
-        </div>
-
-        <div class='nes-field'>
-            <label for='strength'>Strength</label>
-            <input type='text' id='strength' class='nes-input'>
-        </div>
-
-        <div class='nes-field'>
-            <label for='weapon'>Weapon</label>
-            <input type='text' id='weapon' class='nes-input'>
-        </div>
-
-        <div class='selectWrapper'>
-            <label for='default_select'>Select Team</label>
-            <div class='nes-select'>
-                <select required id='default_select'>
-                    <option value='' disabled selected hidden>Select...</option>
-                    <option value='0'>Team A</option>
-                    <option value='1'>Team B</option>
-                </select>
+            <div class='selectWrapper'>
+                <label for='default_select'>Select Team</label>
+                <div class='nes-select'>
+                    <select required id='default_select'>
+                        <option value='' disabled selected hidden>Select...</option>
+                        <option value='0'>Team A</option>
+                        <option value='1'>Team B</option>
+                    </select>
+                </div>
             </div>
         </div>
-    </div>
-    <div class='buttonsWrapper'>
-        <button id='randomPerson' type='button' class='nes-btn is-primary'>Random Person</button>
-        <button id='addToTeam' type='button' class='nes-btn is-primary'>Add to team</button>
-        <button id='startBattle' type='button' class='nes-btn is-primary'>Start Battle</button>
+        <div class='buttonsWrapper'>
+            <button id='randomPerson' type='button' class='nes-btn is-primary'>Random Person</button>
+            <button id='addToTeam' type='button' class='nes-btn is-primary'>Add to team</button>
+            <button id='startBattle' type='button' class='nes-btn is-primary'>Start Battle</button>
+        </div>
     </div>
 </div>
 

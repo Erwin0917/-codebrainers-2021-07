@@ -55,4 +55,5 @@ const battle = () => {
     console.log(villain.hitPoints);
 }
 
-const gameBoard = new GameBuilder(battle);
+const gameBoard = document.querySelector(".gameOne");
+const gameBattle = new GameBuilder(gameBoard, battle);
