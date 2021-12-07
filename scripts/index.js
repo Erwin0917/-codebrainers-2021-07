@@ -27,9 +27,10 @@ const weapons = [
 
 
 class Weapon {
-    constructor() {
-        this.type = weaponSelector[getRandomNumberBetween(0,weaponSelector.length-1)];
-        this.power = this.powerBoost();
+    constructor(name, power) {
+        // this.name = weaponSelector[getRandomNumberBetween(0,weaponSelector.length-1)];
+        this.name = name;
+        this.power = power;
         this.functionality = 100;
 
     }
@@ -60,9 +61,6 @@ class Weapon {
     }
 }
 
-
-
-
 class Person {
     constructor() {
         this.hitPoints = 0;
@@ -70,6 +68,11 @@ class Person {
     }
 
     setWeapon(weapon) {
+        if (!(weapon instanceof Weapon)){
+            console.log('Weapon is not instance of class weapon');
+            return;
+        }
+
         this.weapon = weapon;
     }
 
@@ -111,24 +114,33 @@ class Villain extends Person {
     }
 }
 
+const generateWeapon = () => {
 
+    const drawnWeaponIndex = getRandomNumberBetween(0, weaponSelector.length);
+    const chosenWeaponName = weaponSelector.splice(drawnWeaponIndex, 1).pop();
 
+    const weaponPower = getRandomNumberBetween(0, 99);
+    const weapon = new Weapon(chosenWeaponName, weaponPower);
 
+    return weapon;
+}
 const battle = () => {
+
     const hero = new Hero();
     const villain = new Villain();
 
-    hero.setWeapon(new Weapon())
+    hero.setWeapon(generateWeapon())
+    villain.setWeapon(generateWeapon())
 
 
-    while (hero.isAlive() && villain.isAlive()) {
-        hero.attack(villain, getRandomNumberBetween(2, 35));
-        villain.attack(hero, getRandomNumberBetween(2, 31));
+    // while (hero.isAlive() && villain.isAlive()) {
+    //     hero.attack(villain, getRandomNumberBetween(2, 35));
+    //     villain.attack(hero, getRandomNumberBetween(2, 31));
+    //
+    // }
 
-    }
-
-    console.log(hero.hitPoints);
-    console.log(villain.hitPoints);
+    console.log(hero);
+    console.log(villain);
 }
 
 button.addEventListener('click', battle);
