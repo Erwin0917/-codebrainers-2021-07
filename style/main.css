@@ -1,3 +1,34 @@
 body {
     padding: 25px;
 }
+
+.gameControlWrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inputsWrapper {
+    width: 100%;
+    display: flex;
+}
+
+.nes-field {
+    margin: 10px;
+}
+
+.buttonsWrapper {
+    margin: 10px;
+}
+
+.nes-btn {
+    margin-right: 10px;
+}
+
+.gameBoard {
+    width: 100%;
+    display: flex;
+}
+
+.gameBoard .nes-container.with-title {
+    width: 50%;
+}
