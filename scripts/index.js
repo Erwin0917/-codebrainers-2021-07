@@ -9,15 +9,55 @@ const button = document.querySelector('#button');
 
 // console.log(button);
 
-const weaponSelector = ['wand', 'knife', 'arch', 'hands', 'axe', 'sword', 'rope', 'animal']
+const weaponSelector = ['wand', 'knife', 'arch', 'hands', 'axe', 'sword', 'rope', 'animal'];
+const weapons = [
+    {
+        name: 'wand',
+        powerFactor: 50,
+    },
+    {
+        name: 'knife',
+        powerFactor: 70,
+    },
+    {
+        name: 'arch',
+        powerFactor: 80,
+    },
+];
 
 
 class Weapon {
     constructor() {
         this.type = weaponSelector[getRandomNumberBetween(0,weaponSelector.length-1)];
+        this.power = this.powerBoost();
+        this.functionality = 100;
 
     }
 
+    powerBoost() {
+        this.power = 0;
+        weapons.forEach((weapon, index) => {
+            if (this.type === weapon.name){
+                this.power = index;
+            }
+        });
+        // for (let i = 0; i < weapons.length; i++) {
+        //     if (this.type = weaponSelector[i]){
+        //         this.power = i;
+        //     }
+        // }
+        return this.power;
+    }
+
+    isWorking () {
+        return this.functionality > 0;
+
+    }
+
+    reducingFunctionality(reductionFactor) {
+        this.functionality = this.functionality - reductionFactor;
+
+    }
 }
 
 
@@ -79,6 +119,7 @@ const battle = () => {
     const villain = new Villain();
 
     hero.setWeapon(new Weapon())
+
 
     while (hero.isAlive() && villain.isAlive()) {
         hero.attack(villain, getRandomNumberBetween(2, 35));
