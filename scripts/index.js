@@ -319,7 +319,7 @@
 //                                          HOMEWORK 2 - solution
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-const names = ['Janek', NaN,  undefined,  'andrzej', 'Ania', 'Adrian', 'kamil', 1 , 5, 7, "2", "9", ['abc', 'Ugh'], {name: 'Jakub', city: 'Gdynia'}, 'Ada', 'Kuba', null];
+// const names = ['Janek', NaN,  undefined,  'andrzej', 'Ania', 'Adrian', 'kamil', 1 , 5, 7, "2", "9", ['abc', 'Ugh'], {name: 'Jakub', city: 'Gdynia'}, 'Ada', 'Kuba', null];
 
 // 1 - Filtrowanie -> Same imiona *
 
@@ -371,6 +371,89 @@ const names = ['Janek', NaN,  undefined,  'andrzej', 'Ania', 'Adrian', 'kamil', 
 // }
 // wordsFinishWithA(names)
 
-console.log(names.endsWith('a', ))
+// console.log(names.endsWith('a', ))
 // typeof name === "number
 
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//                                          HOMEWORK game power boost
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+class Person {
+    constructor() {
+        this.name = '';
+        this.hitPoints = 0;
+        this.strength = 0;
+    }
+
+    setWeapon(weapon) {
+        if (!(weapon instanceof Weapon)){
+            console.log('Weapon is not instance of class weapon');
+            return;
+        }
+
+        this.weapon = weapon;
+    }
+
+    isAlive() {
+        return this.hitPoints > 0;
+    }
+
+    setHitPoints(hitPoints) {
+        this.hitPoints = hitPoints >= 0 ? hitPoints : 0;
+    }
+
+
+    attack(target, power) {
+        if(!(target instanceof Person)) {
+            return false;
+        }
+        const damageFactor = Math.round(this.strength * 1/getRandomNumberBetween(1,10));
+        const hitPointsAfterAttack = target.hitPoints - power + damageFactor;
+        target.setHitPoints(hitPointsAfterAttack);
+        return target.hitPoints;
+
+    }
+}
+
+
+class Weapon {
+    constructor(name, power) {
+        // this.name = weaponSelector[getRandomNumberBetween(0,weaponSelector.length-1)];
+        this.name = name;
+        this.power = power;
+        this.functionality = 100;
+
+    }
+
+    powerBoost() {
+        this.power = 0;
+        weapons.forEach((weapon, index) => {
+            if (this.type === weapon.name){
+                this.power = index;
+            }
+        });
+        // for (let i = 0; i < weapons.length; i++) {
+        //     if (this.type = weaponSelector[i]){
+        //         this.power = i;
+        //     }
+        // }
+        return this.power;
+    }
+
+    isWorking () {
+        return this.functionality > 0;
+
+    }
+
+    reducingFunctionality(reductionFactor) {
+        this.functionality = this.functionality - reductionFactor;
+
+    }
+}
+
+let person = new Person()
+console.log("person: ", person)
+
+let weapon = new Weapon()
+console.log("weapon: ", weapon)
