@@ -30,10 +30,15 @@ class Person {
         if(!(target instanceof Person)) {
             return false;
         }
+        let weaponPower = 0;
+        if (this.weapon && this.weapon instanceof Weapon){
+            weaponPower = this.weapon.power;
+        }
         const damageFactor = Math.round(this.strength * 1/getRandomNumberBetween(1,10));
-        const hitPointsAfterAttack = target.hitPoints - power + damageFactor;
+        const attackFactor = power + weaponPower + damageFactor;
+        const hitPointsAfterAttack = target.hitPoints - attackFactor ;
         target.setHitPoints(hitPointsAfterAttack);
-        return target.hitPoints;
+        return attackFactor;
 
     }
 }
@@ -42,7 +47,7 @@ class Person {
 export class Hero extends Person {
     constructor() {
         super();
-        this.hitPoints = 100;
+        this.hitPoints = 10000;
         this.strength = getRandomNumberBetween(10, 20);
     }
 }
@@ -50,7 +55,7 @@ export class Hero extends Person {
 export class Villain extends Person {
     constructor() {
         super();
-        this.hitPoints = 100;
+        this.hitPoints = 10000;
         this.strength = getRandomNumberBetween(10, 20);
     }
 }

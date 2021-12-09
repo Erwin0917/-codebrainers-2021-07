@@ -46,13 +46,13 @@ const battle = () => {
 
 
     while (hero.isAlive() && villain.isAlive()) {
-        hero.attack(villain, getRandomNumberBetween(2, 35));
-        villain.attack(hero, getRandomNumberBetween(2, 31));
-
+        const heroAttack = hero.attack(villain, getRandomNumberBetween(2, 35));
+        const villainAttack = villain.attack(hero, getRandomNumberBetween(2, 31));
+        console.log(`hero's attack with power: ${heroAttack}, and hero's hitPoints: ${hero.hitPoints} `);
+        console.log(`villain's attack with power: ${villainAttack}, and villain's hitPoints: ${villain.hitPoints} `);
     }
 
-    console.log(hero.hitPoints);
-    console.log(villain.hitPoints);
+
 }
 
 const gameBoard = document.querySelector(".gameOne");
