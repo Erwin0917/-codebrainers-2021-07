@@ -1,7 +1,7 @@
 import { getRandomNumberBetween } from './index.js';
 import { Weapon } from './weapon.js';
 
-class Person {
+export class Person {
     constructor() {
         this.name = '';
         this.hitPoints = 0;
@@ -32,7 +32,7 @@ class Person {
         }
         let weaponPower = 0;
         if (this.weapon && this.weapon instanceof Weapon){
-            weaponPower = this.weapon.power;
+            weaponPower = this.weapon.getDamage();
         }
         const damageFactor = Math.round(this.strength * 1/getRandomNumberBetween(1,10));
         const attackFactor = power + weaponPower + damageFactor;

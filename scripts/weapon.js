@@ -8,18 +8,17 @@ export class Weapon {
     }
 
     powerBoost() {
-        this.power = 0;
-        weapons.forEach((weapon, index) => {
-            if (this.type === weapon.name){
-                this.power = index;
-            }
-        });
-        // for (let i = 0; i < weapons.length; i++) {
-        //     if (this.type = weaponSelector[i]){
-        //         this.power = i;
-        //     }
-        // }
-        return this.power;
+       if (Math.random() > 0.7) {
+          return this.power * 0.2;
+       }
+       return 0;
+    }
+
+    getDamage() {
+        //TODO this functionality can not be less then zero
+        const damage = this.isWorking() === false ? 0 : Math.round(this.power + this.powerBoost());
+        this.reducingFunctionality();
+        return damage
     }
 
     isWorking () {
@@ -27,7 +26,7 @@ export class Weapon {
 
     }
 
-    reducingFunctionality(reductionFactor) {
+    reducingFunctionality(reductionFactor = 7) {
         this.functionality = this.functionality - reductionFactor;
 
     }

@@ -49,7 +49,11 @@ const battle = () => {
         const heroAttack = hero.attack(villain, getRandomNumberBetween(2, 35));
         const villainAttack = villain.attack(hero, getRandomNumberBetween(2, 31));
         console.log(`hero's attack with power: ${heroAttack}, and hero's hitPoints: ${hero.hitPoints} `);
+        console.log(hero);
         console.log(`villain's attack with power: ${villainAttack}, and villain's hitPoints: ${villain.hitPoints} `);
+        console.log(villain);
+
+
     }
 
 
