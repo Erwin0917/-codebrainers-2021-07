@@ -36,6 +36,18 @@ const generateWeapon = () => {
     return weapon;
 }
 
+const randomPerson = () => {
+    const names = ["Mike","Nick","Slagathor","Banana","Rick","Astley","Rock","JW","pronax"];
+    const strength = getRandomNumberBetween(2, 35);
+    const weapon = generateWeapon();
+
+    return {
+        names,
+        strength,
+        weapon: weapon.name
+    };
+
+}
 
 const battle = () => {
     const hero = new Hero();
@@ -60,4 +72,5 @@ const battle = () => {
 }
 
 const gameBoard = document.querySelector(".gameOne");
-const gameBattle = new GameBuilder(gameBoard, battle);
+const gameBattle = new GameBuilder(gameBoard, battle, randomPerson);
+
