@@ -1,6 +1,8 @@
 import { Hero, Villain } from './person.js';
 import { Weapon } from './weapon.js';
 import { GameBuilder } from './gameBuilder.js';
+import { Person } from './person.js';
+
 
 export function getRandomNumberBetween(min = 1, max = 10){
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -35,14 +37,37 @@ const generateWeapon = () => {
 
     return weapon;
 }
+const addTeam = () => {
+    const name = randomPerson.name;
+    const strength = randomPerson.strength;
+    const weapon = randomPerson.weapon;
+
+    const team = this.option;
+
+    console.log(team);
+
+    if (team === 'Team A') {
+        const person = new Villain(name, strength, this.weapon = weapon);
+        return person;
+
+    }
+    if (team === 'Team B') {
+        const person = new Hero(name, strength, this.weapon = weapon);
+        return person;
+    }
+
+}
 
 const randomPerson = () => {
     const names = ["Mike","Nick","Slagathor","Banana","Rick","Astley","Rock","JW","pronax"];
+    const nameIndex = getRandomNumberBetween(0, names.length-1);
     const strength = getRandomNumberBetween(2, 35);
     const weapon = generateWeapon();
 
+    const name = names[nameIndex];
+
     return {
-        names,
+        name,
         strength,
         weapon: weapon.name
     };
@@ -72,5 +97,5 @@ const battle = () => {
 }
 
 const gameBoard = document.querySelector(".gameOne");
-const gameBattle = new GameBuilder(gameBoard, battle, randomPerson);
+const gameBattle = new GameBuilder(gameBoard, battle, randomPerson, addTeam);
 
