@@ -40,6 +40,7 @@ function initGame() {
 
     const gameController = new GameController();
     const gameBattle = new GameBuilder(gameBoard, gameController);
+    gameBattle.fillInputs();
 
 }
 

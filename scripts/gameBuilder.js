@@ -13,6 +13,7 @@ export class GameBuilder {
         this.nameInput = this.gameWrapper.querySelector('#name');
         this.strengthInput = this.gameWrapper.querySelector('#strength');
         this.weaponInput = this.gameWrapper.querySelector('#weapon');
+        this.selectTeamInput = this.gameWrapper.querySelector('#default_select');
 
         this.teamAWrapper = this.gameWrapper.querySelector('#team-a-wrapper');
         this.teamBWrapper = this.gameWrapper.querySelector('#team-b-wrapper');
@@ -23,6 +24,7 @@ export class GameBuilder {
         this.startBattleButton.addEventListener('click', this.gameController.startBattle);
         this.randomPersonButton.addEventListener('click', this.fillInputs);
         this.addTeamButton.addEventListener('click', this.readInputs);
+
     }
 
     fillInputs = () =>  {
@@ -31,18 +33,21 @@ export class GameBuilder {
         this.nameInput.value = randomPerson.name;
         this.strengthInput.value = randomPerson.strength;
         this.weaponInput.value = randomPerson.weapon
+        this.selectTeamInput.value = randomPerson.team;
+
     }
 
     readInputs = () => {
-        const select = document.getElementById('default_select');
         const name = this.nameInput.value;
         const strength = this.strengthInput.value;
         const weaponName = this.weaponInput.value;
+        const select = this.selectTeamInput;
         const selectedTeam = select.options[select.selectedIndex].value;
 
         const newPerson = this.gameController.addToTeam(name, strength, weaponName, selectedTeam);
 
         this.addPersonToBoard(newPerson, selectedTeam);
+        this.fillInputs();
 
     }
 
