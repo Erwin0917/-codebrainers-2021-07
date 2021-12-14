@@ -15,7 +15,6 @@ export class Weapon {
     }
 
     getDamage() {
-        //TODO this functionality can not be less then zero
         if (this.functionality >= 0) {
             const damage = this.isWorking() === false ? 0 : Math.round(this.power + this.powerBoost());
             this.reducingFunctionality();

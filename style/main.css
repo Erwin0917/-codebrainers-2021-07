@@ -32,3 +32,9 @@ body {
 .gameBoard .nes-container.with-title {
     width: 50%;
 }
+
+.personWrapper {
+    margin: 5px 0;
+    border-bottom: 2px solid black;
+    padding: 0 10px;
+}

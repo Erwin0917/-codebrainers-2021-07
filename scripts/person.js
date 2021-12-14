@@ -2,10 +2,10 @@ import { getRandomNumberBetween } from './index.js';
 import { Weapon } from './weapon.js';
 
 export class Person {
-    constructor() {
-        this.name = '';
+    constructor(name, strength) {
+        this.name = name;
         this.hitPoints = 0;
-        this.strength = 0;
+        this.strength = strength;
     }
 
     setWeapon(weapon) {
@@ -45,17 +45,17 @@ export class Person {
 
 
 export class Hero extends Person {
-    constructor() {
-        super();
+    constructor(name, strength) {
+        super(name, strength);
         this.hitPoints = 10000;
-        this.strength = getRandomNumberBetween(10, 20);
+        // this.strength = getRandomNumberBetween(10, 20);
     }
 }
 
 export class Villain extends Person {
-    constructor() {
-        super();
+    constructor(name, strength) {
+        super(name, strength);
         this.hitPoints = 10000;
-        this.strength = getRandomNumberBetween(10, 20);
+        // this.strength = getRandomNumberBetween(10, 20);
     }
 }
