@@ -72,8 +72,8 @@ export class GameBuilder {
         personWrapper.innerHTML = `
             <div class='avatar'></div>
             <div class='personName'>${person.name}</div>
-            <div class='personWeapon'>${person.weapon.name}</div>
-            <div class='personStrength'>${person.strength}</div>
+            <div class='personWeapon'>Weapon: ${person.weapon.name}</div>
+            <div class='personStrength'>Strength: ${person.strength}</div>
             <div class='personHitPoints'>Hit points ${person.hitPoints} / ${person.hitPoints}</div>
             <progress class='nes-progress is-error' value='${person.hitPoints}' max='${person.hitPoints}'></progress>
         `;

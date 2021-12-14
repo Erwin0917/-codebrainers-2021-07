@@ -7,6 +7,7 @@ export function getRandomNumberBetween(min = 1, max = 10){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+//TODO: 3 - fix problem with undefined weapon if are names are used.
 const weaponSelector = ['wand', 'knife', 'arch', 'hands', 'axe', 'sword', 'rope', 'animal'];
 const weapons = [
     {

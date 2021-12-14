@@ -6,14 +6,12 @@ export class GameController {
     teamB = [];
 
     addToTeam = (name, strength, weaponName, selectedTeam) => {
-
-        console.log(name, strength, weaponName, selectedTeam);
-
         if (selectedTeam === '') {
             console.log('Pleas select team!');
             return false;
         }
 
+        //TODO: 2 - Use weaponName to generate Weapon.
         const weapon = generateWeapon();
 
         if (selectedTeam === '1') {
@@ -57,10 +55,12 @@ export class GameController {
 
 
     startBattle = () => {
+        //TODO: **Update HTML during the battle.
         this.teamA.forEach((hero, index) => {
             this.duel(hero, this.teamB[index]);
         })
 
+        //TODO:4 - give information about results after battle.
 
 
     }
@@ -69,8 +69,10 @@ export class GameController {
         while (hero.isAlive() && villain.isAlive()) {
             const heroAttack = hero.attack(villain, getRandomNumberBetween(2, 35));
             const villainAttack = villain.attack(hero, getRandomNumberBetween(2, 31));
+            //TODO: **try use information about damage and put it on the game board.
             console.log(hero)
             console.log(villain)
+            //TODO: 1 - One person should alive duel.
         }
 
     }
