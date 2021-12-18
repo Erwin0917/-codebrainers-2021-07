@@ -26,10 +26,11 @@ const weapons = [
 
 
 export const generateWeapon = () => {
-    const drawnWeaponIndex = getRandomNumberBetween(0, weaponSelector.length);
-    const chosenWeaponName = weaponSelector.splice(drawnWeaponIndex, 1).pop();
+    const drawnWeaponIndex = getRandomNumberBetween(0, weaponSelector.length-1);
+    // const chosenWeaponName = weaponSelector.splice(drawnWeaponIndex, 1).pop();
+    const chosenWeaponName = weaponSelector[drawnWeaponIndex];
 
-    const weaponPower = getRandomNumberBetween(0, 99);
+    const weaponPower = getRandomNumberBetween(1, 99);
     const weapon = new Weapon(chosenWeaponName, weaponPower);
 
     return weapon;

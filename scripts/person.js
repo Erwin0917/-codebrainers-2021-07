@@ -30,7 +30,7 @@ export class Person {
         if(!(target instanceof Person)) {
             return false;
         }
-        let weaponPower = 0;
+        let weaponPower = this.weapon.power;
         if (this.weapon && this.weapon instanceof Weapon){
             weaponPower = this.weapon.getDamage();
         }

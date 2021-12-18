@@ -1,4 +1,4 @@
-import { Hero, Villain } from './person.js';
+import {Hero, Person, Villain} from './person.js';
 import { generateWeapon, getRandomNumberBetween } from './index.js';
 
 export class GameController {
@@ -56,24 +56,47 @@ export class GameController {
 
     startBattle = () => {
         //TODO: **Update HTML during the battle.
+
         this.teamA.forEach((hero, index) => {
             this.duel(hero, this.teamB[index]);
         })
 
+        const textWrapper = document.createElement('div');
+            textWrapper.classList.add('textWrapper');
+
+            textWrapper.innerHTML = `
+            <div class='text'>Game Over</div>
+        `;
+
+            return textWrapper;
+
+        textButton.appendChild(textWrapper);
+
+    }
+
+
         //TODO:4 - give information about results after battle.
 
 
-    }
+
 
     duel = (hero, villain) => {
         while (hero.isAlive() && villain.isAlive()) {
             const heroAttack = hero.attack(villain, getRandomNumberBetween(2, 35));
+            console.log(villain)
+
             const villainAttack = villain.attack(hero, getRandomNumberBetween(2, 31));
             //TODO: **try use information about damage and put it on the game board.
             console.log(hero)
-            console.log(villain)
             //TODO: 1 - One person should alive duel.
         }
+        if (hero.isAlive()){
+            console.log("Hero alive")
+        }
+        else {
+            console.log("villain alive")
+        }
+
 
     }
 

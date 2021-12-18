@@ -17,6 +17,8 @@ export class GameBuilder {
 
         this.teamAWrapper = this.gameWrapper.querySelector('#team-a-wrapper');
         this.teamBWrapper = this.gameWrapper.querySelector('#team-b-wrapper');
+        this.textButton = this.gameWrapper.querySelector('#text');
+
         this.addEvents();
     }
 
@@ -24,6 +26,7 @@ export class GameBuilder {
         this.startBattleButton.addEventListener('click', this.gameController.startBattle);
         this.randomPersonButton.addEventListener('click', this.fillInputs);
         this.addTeamButton.addEventListener('click', this.readInputs);
+
 
     }
 

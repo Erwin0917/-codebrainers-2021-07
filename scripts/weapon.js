@@ -20,6 +20,7 @@ export class Weapon {
             this.reducingFunctionality();
             return damage
         }
+        return 0;
     }
 
     isWorking () {
