@@ -1,4 +1,4 @@
-import {Hero, Person, Villain} from './person.js';
+import { Hero, Person, Villain } from './person.js';
 import { generateWeapon, getRandomNumberBetween, randomWeaponName } from './index.js';
 
 export class GameController {
@@ -18,7 +18,7 @@ export class GameController {
         }
 
         if (selectedTeam === '1') {
-            const person =  new Villain(name, strength);
+            const person = new Villain(name, strength);
             person.setWeapon(weapon);
             this.teamB.push(person);
             return person;
@@ -31,7 +31,7 @@ export class GameController {
             return person;
         }
 
-        console.log('Some value is wrong!')
+        console.log('Some value is wrong!');
 
     };
 
@@ -55,35 +55,38 @@ export class GameController {
     };
 
 
+    startBattle = async () => {
+        return await new Promise((resolve) => {
+            this.teamA.forEach(async (hero, index) => {
+                await this.duel(hero, this.teamB[index]);
+                resolve('finished');
+            });
+        });
+    };
+
+    duel = async (hero, villain) => {
+        const promise = await new Promise((resolve) => {
+            const interval = setInterval(() => {
+                if (!hero.isAlive() || !villain.isAlive()) {
+                    clearInterval(interval);
+                    resolve();
+                }
+                const heroAttack = hero.attack(villain, getRandomNumberBetween(2, 35));
+                const villainAttack = villain.attack(hero, getRandomNumberBetween(2, 35));
+
+            }, 25);
+        });
 
 
-    startBattle = () => {
-        //TODO: **Update HTML during the battle.
+        //TODO: **try use information about damage and put it on the game board.
 
-        this.teamA.forEach((hero, index) => {
-            this.duel(hero, this.teamB[index]);
-        })
-
-        return 'finished';
-    }
-
-    duel = (hero, villain) => {
-        while (hero.isAlive() && villain.isAlive()) {
-            const heroAttack = hero.attack(villain, getRandomNumberBetween(2, 35));
-            console.log(villain)
-
-            const villainAttack = villain.attack(hero, getRandomNumberBetween(2, 31));
-            //TODO: **try use information about damage and put it on the game board.
-            console.log("Elo jestem here", hero)
+        if (hero.isAlive()) {
+            console.log('Hero alive');
+        } else {
+            console.log('villain alive');
         }
-        if (hero.isAlive()){
-            console.log("Hero alive")
-        }
-        else {
-            console.log("villain alive")
-        }
 
 
-    }
+    };
 
 }

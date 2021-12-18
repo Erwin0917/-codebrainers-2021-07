@@ -62,6 +62,7 @@ export class GameBuilder {
 
     addPersonToBoard = (person, team) => {
         const htmlPerson = this.createHtmlPersonElement(person);
+
         if (team === '0') {
             this.teamAWrapper.appendChild(htmlPerson);
         }
@@ -92,8 +93,8 @@ export class GameBuilder {
         return personWrapper;
     }
 
-    onStartBattle = () => {
-        const battleFinished = this.gameController.startBattle();
+    onStartBattle = async () => {
+        const battleFinished = await this.gameController.startBattle();
 
         if (battleFinished === 'finished') {
             this.showBattleInfo();
