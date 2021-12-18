@@ -57,17 +57,43 @@ export class GameController {
 
     startBattle = async () => {
         return await new Promise((resolve) => {
-            this.teamA.forEach(async (hero, index) => {
-                await this.duel(hero, this.teamB[index]);
-                resolve('finished');
-            });
+            do {
+                console.log("team A", this.teamA.length);
+                console.log("team B", this.teamB.length);
+
+                if (this.teamA.length >= this.teamB.length){
+                    this.teamA.forEach(async (hero, index) => {
+                        await this.duel(hero, this.teamB[index], index);
+
+                    });
+                } else {
+                    this.teamB.forEach(async (villain, index) => {
+                        await this.duel(villain, this.teamA[index], index);
+                    });
+                }
+            } while (this.teamB.length > 0 && this.teamA.length > 0 );
+            resolve('finished');
         });
     };
 
-    duel = async (hero, villain) => {
+    duel = async (hero, villain, index) => {
         const promise = await new Promise((resolve) => {
             const interval = setInterval(() => {
+                console.log("start interval");
                 if (!hero.isAlive() || !villain.isAlive()) {
+                    console.log(hero.isAlive());
+                    // !hero.isAlive() ? this.teamA.splice(index, 1) : this.teamB.splice(index, 1);
+                    if (!hero.isAlive()) {
+                        this.teamA.splice(index, 1);
+                        console.log('here we delete hero')
+                        console.log(index);
+                        console.log(this.teamA);
+                    } else{
+                        this.teamB.splice(index, 1);
+                        console.log('here we delete villain')
+                        console.log(index);
+                        console.log(this.teamB);
+                    }
                     clearInterval(interval);
                     resolve();
                 }
