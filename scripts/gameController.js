@@ -1,5 +1,5 @@
 import {Hero, Person, Villain} from './person.js';
-import { generateWeapon, getRandomNumberBetween } from './index.js';
+import { generateWeapon, getRandomNumberBetween, randomWeaponName } from './index.js';
 
 export class GameController {
     teamA = [];
@@ -11,8 +11,11 @@ export class GameController {
             return false;
         }
 
-        //TODO: 2 - Use weaponName to generate Weapon.
-        const weapon = generateWeapon();
+        const weapon = generateWeapon(weaponName);
+
+        if (weapon === false) {
+            return false;
+        }
 
         if (selectedTeam === '1') {
             const person =  new Villain(name, strength);
@@ -37,7 +40,7 @@ export class GameController {
         const names = ['Mike', 'Nick', 'Slagathor', 'Banana', 'Rick', 'Astley', 'Rock', 'JW', 'pronax'];
         const nameIndex = getRandomNumberBetween(0, names.length - 1);
         const strength = getRandomNumberBetween(2, 35);
-        const weapon = generateWeapon();
+        const weaponName = randomWeaponName();
         const team = Math.random() > 0.5 ? '1' : '0';
 
         const name = names[nameIndex];
@@ -45,7 +48,7 @@ export class GameController {
         return {
             name,
             strength,
-            weapon: weapon.name,
+            weapon: weaponName,
             team
         };
 
@@ -88,7 +91,6 @@ export class GameController {
             const villainAttack = villain.attack(hero, getRandomNumberBetween(2, 31));
             //TODO: **try use information about damage and put it on the game board.
             console.log(hero)
-            //TODO: 1 - One person should alive duel.
         }
         if (hero.isAlive()){
             console.log("Hero alive")

@@ -49,6 +49,9 @@ export class GameBuilder {
 
         const newPerson = this.gameController.addToTeam(name, strength, weaponName, selectedTeam);
 
+        if (newPerson === false) {
+            return;
+        }
         this.addPersonToBoard(newPerson, selectedTeam);
         this.fillInputs();
 
