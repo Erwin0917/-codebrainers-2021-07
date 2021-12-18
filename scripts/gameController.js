@@ -74,7 +74,7 @@ export class GameController {
 
             const villainAttack = villain.attack(hero, getRandomNumberBetween(2, 31));
             //TODO: **try use information about damage and put it on the game board.
-            console.log(hero)
+            console.log("Elo jestem here", hero)
         }
         if (hero.isAlive()){
             console.log("Hero alive")

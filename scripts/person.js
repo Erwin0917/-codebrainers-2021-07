@@ -44,8 +44,21 @@ export class Person {
         const attackFactor = power + weaponPower + damageFactor;
         const hitPointsAfterAttack = target.hitPoints - attackFactor ;
         target.setHitPoints(hitPointsAfterAttack);
+        target.updateHTML()
+
         return attackFactor;
 
+    }
+
+    updateHTML = () =>{
+        if (this.htmlWrapper !== null) {
+            const progressBar = this.htmlWrapper.querySelector('.nes-progress');
+            progressBar.value = this.hitPoints;
+            const maxHitsPoints = progressBar.max;
+
+            const personHitPoints = this.htmlWrapper.querySelector('.personHitPoints');
+            personHitPoints.innerHTML = `HitPoints ${this.hitPoints}/ ${maxHitsPoints}`;
+        }
     }
 }
 
