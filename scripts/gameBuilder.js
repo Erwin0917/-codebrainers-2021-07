@@ -2,7 +2,7 @@ import { Person } from './person.js';
 
 export class GameBuilder {
 
-    constructor(gameHTMLwrapper, gameController ) {
+    constructor(gameHTMLwrapper, gameController) {
         this.gameController = gameController;
         this.gameWrapper = gameHTMLwrapper;
 
@@ -17,15 +17,18 @@ export class GameBuilder {
 
         this.teamAWrapper = this.gameWrapper.querySelector('#team-a-wrapper');
         this.teamBWrapper = this.gameWrapper.querySelector('#team-b-wrapper');
-        this.textButton = this.gameWrapper.querySelector('#text');
+
+        this.battleRaport = this.gameWrapper.querySelector('#dialog-default');
+        this.battleRaportCloseButton = this.battleRaport.querySelector('.nes-btn');
 
         this.addEvents();
     }
 
     addEvents = () => {
-        this.startBattleButton.addEventListener('click', this.gameController.startBattle);
+        this.startBattleButton.addEventListener('click', this.onStartBattle);
         this.randomPersonButton.addEventListener('click', this.fillInputs);
         this.addTeamButton.addEventListener('click', this.readInputs);
+        this.battleRaportCloseButton.addEventListener('click', this.hideBattleRaport);
 
 
     }
@@ -85,6 +88,30 @@ export class GameBuilder {
         `;
 
         return personWrapper;
+    }
+
+    onStartBattle = () => {
+        const battleFinished = this.gameController.startBattle();
+
+        if (battleFinished === 'finished') {
+            this.showBattleInfo();
+        }
+
+    }
+
+
+    showBattleInfo = () => {
+        const paragraph = this.battleRaport.querySelector('.raport-res');
+        const teamARes = this.gameController.teamA.filter(character => character.isAlive());
+        const winnerTeam = teamARes.length === 0 ? 'TeamB' : 'TeamA';
+
+        paragraph.innerText = `Winner is: ${winnerTeam}`;
+
+        this.battleRaport.style.display = 'block';
+    }
+
+    hideBattleRaport = () => {
+        this.battleRaport.style.display = 'none';
     }
 
 }

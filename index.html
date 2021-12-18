@@ -6,16 +6,15 @@
           content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
     <!-- latest -->
-    <link href='https://unpkg.com/nes.css@latest/css/nes.min.css' rel='stylesheet'/>
+    <link href='https://unpkg.com/nes.css@latest/css/nes.min.css' rel='stylesheet' />
     <!-- core style only -->
-    <link href='https://unpkg.com/nes.css/css/nes-core.min.css' rel='stylesheet'/>
+    <link href='https://unpkg.com/nes.css/css/nes-core.min.css' rel='stylesheet' />
     <title>JS Basic game </title>
     <link rel='stylesheet' href='./style/main.css'>
 </head>
 <body>
 <div class='gameOne'>
-    <div id='text' class="text">
-    </div>
+
 
     <div class='gameBoard'>
         <div class='nes-container with-title is-centered'>
@@ -68,6 +67,18 @@
             <button id='startBattle' type='button' class='nes-btn is-primary'>Start Battle</button>
         </div>
     </div>
+
+
+    <dialog class='nes-dialog' id='dialog-default'>
+        <form method='dialog'>
+            <p class='title'>Battle finished!</p>
+            <p class='raport-res'>Winner is: TeamA</p>
+
+            <menu class='dialog-menu'>
+                <button class='nes-btn is-primary'>Confirm</button>
+            </menu>
+        </form>
+    </dialog>
 </div>
 
 

@@ -64,24 +64,8 @@ export class GameController {
             this.duel(hero, this.teamB[index]);
         })
 
-        const textWrapper = document.createElement('div');
-            textWrapper.classList.add('textWrapper');
-
-            textWrapper.innerHTML = `
-            <div class='text'>Game Over</div>
-        `;
-
-            return textWrapper;
-
-        textButton.appendChild(textWrapper);
-
+        return 'finished';
     }
-
-
-        //TODO:4 - give information about results after battle.
-
-
-
 
     duel = (hero, villain) => {
         while (hero.isAlive() && villain.isAlive()) {
