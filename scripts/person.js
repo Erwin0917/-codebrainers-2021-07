@@ -2,6 +2,8 @@ import { getRandomNumberBetween } from './index.js';
 import { Weapon } from './weapon.js';
 
 export class Person {
+    htmlWrapper = null;
+
     constructor(name, strength) {
         this.name = name;
         this.hitPoints = 0;
@@ -15,6 +17,10 @@ export class Person {
         }
 
         this.weapon = weapon;
+    }
+
+    setHtmlWrapper = (htmlWrapper) => {
+        this.htmlWrapper = htmlWrapper;
     }
 
     isAlive() {

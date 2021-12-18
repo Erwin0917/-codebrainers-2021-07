@@ -69,6 +69,8 @@ export class GameBuilder {
         if (team === '1') {
             this.teamBWrapper.appendChild(htmlPerson);
         }
+
+        person.setHtmlWrapper(htmlPerson);
     }
 
     createHtmlPersonElement(person) {
