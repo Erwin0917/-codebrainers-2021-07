@@ -56,52 +56,83 @@ export class GameController {
 
 
     startBattle = async () => {
-        return await new Promise((resolve) => {
-            do {
-                console.log("team A", this.teamA.length);
-                console.log("team B", this.teamB.length);
+        // return await new Promise((resolve) => {
 
-                if (this.teamA.length >= this.teamB.length){
-                    this.teamA.forEach(async (hero, index) => {
-                        await this.duel(hero, this.teamB[index], index);
+            while (this.teamB.length > 0 && this.teamA.length > 0) {
+                console.log('this.teamA.length', this.teamA);
+                console.log('this.teamB.length', this.teamB)
+                if (this.teamA.length <= this.teamB.length) {
+                    this.teamA.forEach((hero, index) => {
+                        console.log('Hero attack villain');
+                        this.duel(hero, this.teamB[index], index);
+
 
                     });
                 } else {
-                    this.teamB.forEach(async (villain, index) => {
-                        await this.duel(villain, this.teamA[index], index);
+                    this.teamB.forEach((villain, index) => {
+                        console.log('villain attack hero');
+                        this.duel(villain, this.teamA[index], index);
                     });
                 }
-            } while (this.teamB.length > 0 && this.teamA.length > 0 );
-            resolve('finished');
-        });
+
+            }
+
+            // await timeOut(200);
+
+
+            console.log('FINISH GAME!');
+            // resolve('finished');
+        // });
     };
 
-    duel = async (hero, villain, index) => {
-        const promise = await new Promise((resolve) => {
-            const interval = setInterval(() => {
-                console.log("start interval");
-                if (!hero.isAlive() || !villain.isAlive()) {
-                    console.log(hero.isAlive());
-                    // !hero.isAlive() ? this.teamA.splice(index, 1) : this.teamB.splice(index, 1);
-                    if (!hero.isAlive()) {
-                        this.teamA.splice(index, 1);
-                        console.log('here we delete hero')
-                        console.log(index);
-                        console.log(this.teamA);
-                    } else{
-                        this.teamB.splice(index, 1);
-                        console.log('here we delete villain')
-                        console.log(index);
-                        console.log(this.teamB);
-                    }
-                    clearInterval(interval);
-                    resolve();
-                }
-                const heroAttack = hero.attack(villain, getRandomNumberBetween(2, 35));
-                const villainAttack = villain.attack(hero, getRandomNumberBetween(2, 35));
+    duel = (hero, villain, index) => {
+            // const interval = setInterval(() => {
+            //     console.log("start interval");
+            //     if (!hero.isAlive() || !villain.isAlive()) {
+            //         console.log(hero.isAlive());
+            //         // !hero.isAlive() ? this.teamA.splice(index, 1) : this.teamB.splice(index, 1);
+            //         if (!hero.isAlive()) {
+            //             this.teamA.splice(index, 1);
+            //             console.log('here we delete hero')
+            //             console.log(index);
+            //             console.log(this.teamA);
+            //         } else {
+            //             this.teamB.splice(index, 1);
+            //             console.log('here we delete villain')
+            //             console.log(index);
+            //             console.log(this.teamB);
+            //         }
+            //         // clearInterval(interval);
+            //         // resolve();
+            //     }
+            //
+            //     const heroAttack = hero.attack(villain, getRandomNumberBetween(2, 35));
+            //     const villainAttack = villain.attack(hero, getRandomNumberBetween(2, 35));
+            //     console.log('heroAttack', heroAttack);
+            //     console.log('villainAttack', villainAttack);
+            // }, 25);
 
-            }, 25);
-        });
+            console.log('hero is', hero);
+            console.log('villain is', villain);
+
+            if (!hero.isAlive() || !villain.isAlive()) {
+                console.log(hero.isAlive());
+                // !hero.isAlive() ? this.teamA.splice(index, 1) : this.teamB.splice(index, 1);
+
+                if (hero instanceof Hero) {
+                    this.teamA.splice(index, 1);
+                    console.log('here we delete hero');
+                } else {
+                    this.teamB.splice(index, 1);
+                    console.log('here we delete villain');
+                }
+
+
+            }
+            const heroAttack = hero.attack(villain, getRandomNumberBetween(2, 35));
+            const villainAttack = villain.attack(hero, getRandomNumberBetween(2, 35));
+
+
 
 
         //TODO: **try use information about damage and put it on the game board.
@@ -116,3 +147,5 @@ export class GameController {
     };
 
 }
+
+const timeOut = async (time) => await new Promise(resolve =>  setTimeout(resolve, time));

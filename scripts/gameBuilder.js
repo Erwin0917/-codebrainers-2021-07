@@ -105,10 +105,10 @@ export class GameBuilder {
 
     showBattleInfo = () => {
         const paragraph = this.battleRaport.querySelector('.raport-res');
-        const teamARes = this.gameController.teamA.filter(character => character.isAlive());
-        const winnerTeam = teamARes.length === 0 ? 'TeamB' : 'TeamA';
+        // const teamARes = this.gameController.teamA.filter(character => character.isAlive());
+        // const winnerTeam = teamARes.length === 0 ? 'TeamB' : 'TeamA';
 
-        paragraph.innerText = `Winner is: ${winnerTeam}`;
+        // paragraph.innerText = `Winner is: ${winnerTeam}`;
 
         this.battleRaport.style.display = 'block';
     }
