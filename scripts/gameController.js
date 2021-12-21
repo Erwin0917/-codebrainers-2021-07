@@ -7,7 +7,7 @@ export class GameController {
 
     addToTeam = (name, strength, weaponName, selectedTeam) => {
         if (selectedTeam === '') {
-            console.log('Pleas select team!');
+            console.log('Please select team!');
             return false;
         }
 
@@ -21,6 +21,7 @@ export class GameController {
             const person = new Villain(name, strength);
             person.setWeapon(weapon);
             this.teamB.push(person);
+            window.localStorage.setItem('characters', JSON.stringify(this.teamB.concat(this.teamA)));
             return person;
         }
 
@@ -28,11 +29,11 @@ export class GameController {
             const person = new Hero(name, strength);
             person.setWeapon(weapon);
             this.teamA.push(person);
+            window.localStorage.setItem('characters', JSON.stringify(this.teamB.concat(this.teamA)));
             return person;
         }
 
         console.log('Some value is wrong!');
-
     };
 
 

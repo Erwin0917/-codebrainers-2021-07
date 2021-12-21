@@ -67,6 +67,7 @@ export class Hero extends Person {
     constructor(name, strength) {
         super(name, strength);
         this.hitPoints = getRandomNumberBetween(1500, 2500);
+        this.type = 'hero'
         // this.strength = getRandomNumberBetween(10, 20);
     }
 }
@@ -75,6 +76,7 @@ export class Villain extends Person {
     constructor(name, strength) {
         super(name, strength);
         this.hitPoints = getRandomNumberBetween(1500, 2500);
+        this.type = 'villain'
         // this.strength = getRandomNumberBetween(10, 20);
     }
 }
