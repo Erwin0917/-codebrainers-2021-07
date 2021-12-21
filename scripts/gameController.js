@@ -5,13 +5,13 @@ export class GameController {
     teamA = [];
     teamB = [];
 
-    addToTeam = (name, strength, weaponName, selectedTeam) => {
+    addToTeam = (name, strength, weaponName, weaponPower, selectedTeam) => {
         if (selectedTeam === '') {
             console.log('Please select team!');
             return false;
         }
 
-        const weapon = generateWeapon(weaponName);
+        const weapon = generateWeapon(weaponName, weaponPower);
 
         if (weapon === false) {
             return false;
@@ -35,6 +35,8 @@ export class GameController {
 
         console.log('Some value is wrong!');
     };
+
+
 
 
     randomPerson = () => {

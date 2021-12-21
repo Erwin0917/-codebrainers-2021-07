@@ -22,7 +22,10 @@ export class GameBuilder {
         this.battleRaportCloseButton = this.battleRaport.querySelector('.nes-btn');
 
         this.addEvents();
+        this.readLocalStorage();
+
     }
+
 
     addEvents = () => {
         this.startBattleButton.addEventListener('click', this.onStartBattle);
@@ -43,6 +46,25 @@ export class GameBuilder {
 
     }
 
+    readLocalStorage = () => {
+
+        const characters = window.localStorage.getItem('characters');
+        if (characters === null){
+            return;
+        }
+        const parsedCharacters = JSON.parse(characters);
+
+        parsedCharacters.forEach(person => {
+            // (name, strength, weaponName, selectedTeam)
+            console.log(person);
+            const selectedTeam = person.type === "hero" ? "0" : "1";
+            const newPerson = this.gameController.addToTeam(person.name, person.strength, person.weapon.name, person.weapon.power, selectedTeam)
+            this.addPersonToBoard(newPerson, selectedTeam);
+
+        });
+        console.log(parsedCharacters);
+
+    }
     readInputs = () => {
         const name = this.nameInput.value;
         const strength = this.strengthInput.value;
@@ -105,10 +127,10 @@ export class GameBuilder {
 
     showBattleInfo = () => {
         const paragraph = this.battleRaport.querySelector('.raport-res');
-        // const teamARes = this.gameController.teamA.filter(character => character.isAlive());
-        // const winnerTeam = teamARes.length === 0 ? 'TeamB' : 'TeamA';
+        const teamARes = this.gameController.teamA.filter(character => character.isAlive());
+        const winnerTeam = teamARes.length === 0 ? 'TeamB' : 'TeamA';
 
-        // paragraph.innerText = `Winner is: ${winnerTeam}`;
+        paragraph.innerText = `Winner is: ${winnerTeam}`;
 
         this.battleRaport.style.display = 'block';
     }

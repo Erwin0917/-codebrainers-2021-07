@@ -24,7 +24,7 @@ const weapons = [
 ];
 
 
-export const generateWeapon = (weaponName) => {
+export const generateWeapon = (weaponName, weaponPower) => {
     const indexOfWeaponName = weaponSelector.indexOf(weaponName);
     if (indexOfWeaponName === -1) {
         console.log('Wrong weapon name!');
@@ -32,8 +32,8 @@ export const generateWeapon = (weaponName) => {
     }
     const chosenWeaponName = weaponSelector.splice(indexOfWeaponName, 1).pop();
 
-    const weaponPower = getRandomNumberBetween(1, 99);
-    const weapon = new Weapon(chosenWeaponName, weaponPower);
+    const power = weaponPower === undefined ? getRandomNumberBetween(1, 99) : weaponPower;
+    const weapon = new Weapon(chosenWeaponName, power);
 
     return weapon;
 }
