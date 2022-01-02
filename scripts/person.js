@@ -5,6 +5,7 @@ export class Person {
     htmlWrapper = null;
 
     constructor(name, strength) {
+        this.id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
         this.name = name;
         this.hitPoints = 0;
         this.strength = strength;
@@ -44,29 +45,17 @@ export class Person {
         const attackFactor = power + weaponPower + damageFactor;
         const hitPointsAfterAttack = target.hitPoints - attackFactor ;
         target.setHitPoints(hitPointsAfterAttack);
-        target.updateHTML()
-
-        return attackFactor;
-
+        return target;
     }
 
-    updateHTML = () =>{
-        if (this.htmlWrapper !== null) {
-            const progressBar = this.htmlWrapper.querySelector('.nes-progress');
-            progressBar.value = this.hitPoints;
-            const maxHitsPoints = progressBar.max;
-
-            const personHitPoints = this.htmlWrapper.querySelector('.personHitPoints');
-            personHitPoints.innerHTML = `HitPoints ${this.hitPoints}/ ${maxHitsPoints}`;
-        }
-    }
 }
 
 
 export class Hero extends Person {
     constructor(name, strength) {
         super(name, strength);
-        this.hitPoints = getRandomNumberBetween(1500, 2500);
+        this.hitPoints = getRandomNumberBetween(500, 1500);
+        this.initHitPoints = this.hitPoints;
         this.type = 'hero'
         // this.strength = getRandomNumberBetween(10, 20);
     }
@@ -75,7 +64,8 @@ export class Hero extends Person {
 export class Villain extends Person {
     constructor(name, strength) {
         super(name, strength);
-        this.hitPoints = getRandomNumberBetween(1500, 2500);
+        this.hitPoints = getRandomNumberBetween(500, 1500);
+        this.initHitPoints = this.hitPoints;
         this.type = 'villain'
         // this.strength = getRandomNumberBetween(10, 20);
     }

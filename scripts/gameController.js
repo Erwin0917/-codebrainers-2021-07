@@ -1,19 +1,24 @@
-import { Hero, Person, Villain } from './person.js';
+import { Hero, Villain } from './person.js';
 import { generateWeapon, getRandomNumberBetween, randomWeaponName } from './index.js';
 
 export class GameController {
     teamA = [];
     teamB = [];
 
+
+    constructor(gameBuilder) {
+        this.gameBuilder = gameBuilder;
+    }
+
     addToTeam = (name, strength, weaponName, weaponPower, selectedTeam) => {
         if (selectedTeam === '') {
             console.log('Please select team!');
             return false;
         }
-
         const weapon = generateWeapon(weaponName, weaponPower);
 
         if (weapon === false) {
+            console.log('Wrong weapon');
             return false;
         }
 
@@ -37,8 +42,6 @@ export class GameController {
     };
 
 
-
-
     randomPerson = () => {
         const names = ['Mike', 'Nick', 'Slagathor', 'Banana', 'Rick', 'Astley', 'Rock', 'JW', 'pronax'];
         const nameIndex = getRandomNumberBetween(0, names.length - 1);
@@ -59,96 +62,55 @@ export class GameController {
 
 
     startBattle = async () => {
-        // return await new Promise((resolve) => {
-
-            while (this.teamB.length > 0 && this.teamA.length > 0) {
-                console.log('this.teamA.length', this.teamA);
-                console.log('this.teamB.length', this.teamB)
-                if (this.teamA.length <= this.teamB.length) {
-                    this.teamA.forEach((hero, index) => {
-                        console.log('Hero attack villain');
-                        this.duel(hero, this.teamB[index], index);
-
-
-                    });
-                } else {
-                    this.teamB.forEach((villain, index) => {
-                        console.log('villain attack hero');
-                        this.duel(villain, this.teamA[index], index);
-                    });
-                }
-
+        while (this.teamB.length > 0 && this.teamA.length > 0) {
+            if (this.teamA.length <= this.teamB.length) {
+                this.teamA.forEach((hero, index) => {
+                    this.duel(hero, this.teamB[index]);
+                });
+            } else {
+                this.teamB.forEach((villain, index) => {
+                    this.duel(villain, this.teamA[index]);
+                });
             }
-
-            // await timeOut(200);
-
-
-            console.log('FINISH GAME!');
-            // resolve('finished');
-        // });
-    };
-
-    duel = (hero, villain, index) => {
-            // const interval = setInterval(() => {
-            //     console.log("start interval");
-            //     if (!hero.isAlive() || !villain.isAlive()) {
-            //         console.log(hero.isAlive());
-            //         // !hero.isAlive() ? this.teamA.splice(index, 1) : this.teamB.splice(index, 1);
-            //         if (!hero.isAlive()) {
-            //             this.teamA.splice(index, 1);
-            //             console.log('here we delete hero')
-            //             console.log(index);
-            //             console.log(this.teamA);
-            //         } else {
-            //             this.teamB.splice(index, 1);
-            //             console.log('here we delete villain')
-            //             console.log(index);
-            //             console.log(this.teamB);
-            //         }
-            //         // clearInterval(interval);
-            //         // resolve();
-            //     }
-            //
-            //     const heroAttack = hero.attack(villain, getRandomNumberBetween(2, 35));
-            //     const villainAttack = villain.attack(hero, getRandomNumberBetween(2, 35));
-            //     console.log('heroAttack', heroAttack);
-            //     console.log('villainAttack', villainAttack);
-            // }, 25);
-
-            console.log('hero is', hero);
-            console.log('villain is', villain);
-
-            if (!hero.isAlive() || !villain.isAlive()) {
-                console.log(hero.isAlive());
-                // !hero.isAlive() ? this.teamA.splice(index, 1) : this.teamB.splice(index, 1);
-
-                if (hero instanceof Hero) {
-                    this.teamA.splice(index, 1);
-                    console.log('here we delete hero');
-                } else {
-                    this.teamB.splice(index, 1);
-                    console.log('here we delete villain');
-                }
-
-
-            }
-            const heroAttack = hero.attack(villain, getRandomNumberBetween(2, 35));
-            const villainAttack = villain.attack(hero, getRandomNumberBetween(2, 35));
-
-
-
-
-        //TODO: **try use information about damage and put it on the game board.
-
-        if (hero.isAlive()) {
-            console.log('Hero alive');
-        } else {
-            console.log('villain alive');
+            await timeOut(100);
         }
 
+        console.log('FINISH GAME!');
+    };
+
+    duel = (attacker, defender) => {
+        if (attacker === undefined || defender === undefined) {
+            return;
+        }
+
+        if (attacker.isAlive()) {
+            const defenderAfterAttack = attacker.attack(defender, getRandomNumberBetween(2, 35));
+        }
+
+        if (defender.isAlive()) {
+            const attackerAfterAttack = defender.attack(attacker, getRandomNumberBetween(2, 35));
+        }
+
+        if (!defender.isAlive()) {
+           if (defender.type === 'hero') {
+               this.teamA = this.teamA.filter( person => person.id !== defender.id);
+           } else {
+               this.teamB = this.teamB.filter( person => person.id !== defender.id);
+           }
+        }
+
+        if (!attacker.isAlive()) {
+           if (attacker.type === 'hero') {
+               this.teamA = this.teamA.filter( person => person.id !== attacker.id);
+           } else {
+               this.teamB = this.teamB.filter( person => person.id !== attacker.id);
+           }
+        }
+
+        this.gameBuilder.updateTeamsView([...this.teamA, ...this.teamB]);
 
     };
 
 }
 
-const timeOut = async (time) => await new Promise(resolve =>  setTimeout(resolve, time));
+const timeOut = async (time) => await new Promise(resolve => setTimeout(resolve, time));
