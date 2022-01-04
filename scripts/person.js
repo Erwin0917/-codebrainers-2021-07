@@ -1,4 +1,4 @@
-import { getRandomNumberBetween } from './index.js';
+import {getRandomNumberBetween, randomWeaponName} from './index.js';
 import { Weapon } from './weapon.js';
 
 export class Person {
@@ -70,3 +70,5 @@ export class Villain extends Person {
         // this.strength = getRandomNumberBetween(10, 20);
     }
 }
+
+

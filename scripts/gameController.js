@@ -42,23 +42,6 @@ export class GameController {
     };
 
 
-    randomPerson = () => {
-        const names = ['Mike', 'Nick', 'Slagathor', 'Banana', 'Rick', 'Astley', 'Rock', 'JW', 'pronax'];
-        const nameIndex = getRandomNumberBetween(0, names.length - 1);
-        const strength = getRandomNumberBetween(2, 35);
-        const weaponName = randomWeaponName();
-        const team = Math.random() > 0.5 ? '1' : '0';
-
-        const name = names[nameIndex];
-
-        return {
-            name,
-            strength,
-            weapon: weaponName,
-            team
-        };
-
-    };
 
 
     startBattle = async () => {

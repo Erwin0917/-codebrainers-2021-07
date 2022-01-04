@@ -24,6 +24,7 @@ const weapons = [
 ];
 
 
+
 export const generateWeapon = (weaponName, weaponPower) => {
     const indexOfWeaponName = weaponSelector.indexOf(weaponName);
     if (indexOfWeaponName === -1) {
@@ -56,14 +57,14 @@ function initGame() {
     const gameBuilder = new GameBuilder(gameBoard);
     const gameController = new GameController(gameBuilder);
 
-    gameBuilder.fillInputs(gameController.randomPerson());
+    gameBuilder.fillInputs();
 
     gameBoard.querySelector('#startBattle').addEventListener('click', gameController.startBattle);
     gameBoard.querySelector('#addToTeam').addEventListener('click', () => {
         const rawPerson = gameBuilder.readInputs();
         const newPerson = gameController.addToTeam(rawPerson.name, rawPerson.strength, rawPerson.weapon, undefined, rawPerson.selectedTeam);
         gameBuilder.addPersonToBoard(newPerson, rawPerson.selectedTeam);
-        gameBuilder.fillInputs(gameController.randomPerson())
+        gameBuilder.fillInputs();
     });
 
     gameBuilder.readLocalStorage(gameController.addToTeam);

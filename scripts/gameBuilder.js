@@ -1,9 +1,15 @@
+import {getRandomNumberBetween, randomWeaponName} from "./index.js";
+
+
+
 export class GameBuilder {
 
     constructor(gameHTMLwrapper) {
         this.gameWrapper = gameHTMLwrapper;
 
         this.randomPersonButton = this.gameWrapper.querySelector('#randomPerson');
+        this.clearLocalStorageButton = this.gameWrapper.querySelector('#clearLocalStorage');
+
 
         this.nameInput = this.gameWrapper.querySelector('#name');
         this.strengthInput = this.gameWrapper.querySelector('#strength');
@@ -23,15 +29,26 @@ export class GameBuilder {
     addEvents = () => {
         this.randomPersonButton.addEventListener('click', this.fillInputs);
         this.battleRaportCloseButton.addEventListener('click', this.hideBattleReport);
-
+        this.clearLocalStorageButton.addEventListener('click', this.clearLocalStorage);
 
     };
 
-    fillInputs = (randomPerson) => {
-        this.nameInput.value = randomPerson.name;
-        this.strengthInput.value = randomPerson.strength;
-        this.weaponInput.value = randomPerson.weapon;
-        this.selectTeamInput.value = randomPerson.team;
+
+
+    fillInputs = () => {
+
+        const names = ['Mike', 'Nick', 'Slagathor', 'Banana', 'Rick', 'Astley', 'Rock', 'JW', 'pronax'];
+        const nameIndex = getRandomNumberBetween(0, names.length - 1);
+        const strength = getRandomNumberBetween(2, 35);
+        const weaponName = randomWeaponName();
+        const team = Math.random() > 0.5 ? '1' : '0';
+
+        const name = names[nameIndex];
+
+        this.nameInput.value = name;
+        this.strengthInput.value = strength;
+        this.weaponInput.value = weaponName;
+        this.selectTeamInput.value = team;
 
     };
 
@@ -47,6 +64,13 @@ export class GameBuilder {
 
     };
 
+    clearLocalStorage = () => {
+        const storage = window.localStorage.clear();
+
+        this.clearTeamsView();
+
+    };
+
     renderTeams = (teams, addToTeamCallback) => {
         teams.forEach(person => {
             const selectedTeam = person.type === 'hero' ? '0' : '1';
@@ -57,13 +81,19 @@ export class GameBuilder {
     };
 
     updateTeamsView = (teams) => {
-        this.teamAWrapper.innerHTML = '';
-        this.teamBWrapper.innerHTML = '';
+        this.clearTeamsView();
         teams.forEach( person => {
             const selectedTeam = person.type === 'hero' ? '0' : '1';
             this.addPersonToBoard(person, selectedTeam);
         })
     }
+
+    clearTeamsView = () => {
+        this.teamAWrapper.innerHTML = '';
+        this.teamBWrapper.innerHTML = '';
+
+    }
+
 
 
     readInputs = () => {
