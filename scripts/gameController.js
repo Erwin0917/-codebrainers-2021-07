@@ -74,7 +74,7 @@ export class GameController {
             }
             await timeOut(100);
         }
-
+        this.gameBuilder.showBattleInfo(this.teamA);
         console.log('FINISH GAME!');
     };
 

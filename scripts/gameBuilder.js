@@ -22,7 +22,7 @@ export class GameBuilder {
 
     addEvents = () => {
         this.randomPersonButton.addEventListener('click', this.fillInputs);
-        this.battleRaportCloseButton.addEventListener('click', this.hideBattleRaport);
+        this.battleRaportCloseButton.addEventListener('click', this.hideBattleReport);
 
 
     };
@@ -125,17 +125,20 @@ export class GameBuilder {
     // }
 
 
-    // showBattleInfo = () => {
-    //     const paragraph = this.battleRaport.querySelector('.raport-res');
-    //     const teamARes = this.gameController.teamA.filter(character => character.isAlive());
-    //     const winnerTeam = teamARes.length === 0 ? 'TeamB' : 'TeamA';
-    //
-    //     paragraph.innerText = `Winner is: ${winnerTeam}`;
-    //
-    //     this.battleRaport.style.display = 'block';
-    // }
+    showBattleInfo = (teamA) => {
+        if (teamA === undefined && !Array.isArray(teamA)) {
+            return;
+        }
+        const paragraph = this.battleRaport.querySelector('.raport-res');
+        const teamARes = teamA.filter(character => character.isAlive());
+        const winnerTeam = teamARes.length === 0 ? 'TeamB' : 'TeamA';
 
-    hideBattleRaport = () => {
+        paragraph.innerText = `Winner is: ${winnerTeam}`;
+
+        this.battleRaport.style.display = 'block';
+    }
+
+    hideBattleReport = () => {
         this.battleRaport.style.display = 'none';
     };
 
