@@ -9,6 +9,7 @@ export class Person {
         this.name = name;
         this.hitPoints = 0;
         this.strength = strength;
+        this.lastDamage = '';
     }
 
     setWeapon(weapon) {
@@ -45,7 +46,7 @@ export class Person {
         const attackFactor = power + weaponPower + damageFactor;
         const hitPointsAfterAttack = target.hitPoints - attackFactor ;
         target.setHitPoints(hitPointsAfterAttack);
-        return target;
+        return attackFactor;
     }
 
 }

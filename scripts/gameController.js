@@ -66,12 +66,17 @@ export class GameController {
             return;
         }
 
+        let defendersDamage = null;
         if (attacker.isAlive()) {
-            const defenderAfterAttack = attacker.attack(defender, getRandomNumberBetween(2, 35));
+            defendersDamage = attacker.attack(defender, getRandomNumberBetween(2, 35));
+            defender.lastDamage = -defendersDamage;
         }
 
+        let attackersDamage = null;
         if (defender.isAlive()) {
-            const attackerAfterAttack = defender.attack(attacker, getRandomNumberBetween(2, 35));
+            attackersDamage= defender.attack(attacker, getRandomNumberBetween(2, 35));
+            attacker.lastDamage = -attackersDamage;
+
         }
 
         if (!defender.isAlive()) {
@@ -90,7 +95,7 @@ export class GameController {
            }
         }
 
-        this.gameBuilder.updateTeamsView([...this.teamA, ...this.teamB]);
+        this.gameBuilder.updateTeamsView([...this.teamA, ...this.teamB] );
 
     };
 

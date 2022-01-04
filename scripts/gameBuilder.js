@@ -134,6 +134,7 @@ export class GameBuilder {
 
         personWrapper.innerHTML = `
             <div class='avatar'></div>
+            <div class='damage'>${person.lastDamage}</div>
             <div class='personName'>${person.name}</div>
             <div class='personWeapon'>Weapon: ${person.weapon.name}</div>
             <div class='personStrength'>Strength: ${person.strength}</div>
