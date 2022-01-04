@@ -17,14 +17,11 @@ export class GameBuilder {
         this.battleRaportCloseButton = this.battleRaport.querySelector('.nes-btn');
 
         this.addEvents();
-
-
     }
 
 
     addEvents = () => {
         this.randomPersonButton.addEventListener('click', this.fillInputs);
-        // this.addTeamButton.addEventListener('click', this.readInputs);
         this.battleRaportCloseButton.addEventListener('click', this.hideBattleRaport);
 
 

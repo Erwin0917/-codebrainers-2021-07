@@ -53,20 +53,20 @@ export const randomWeaponName = () => {
 function initGame() {
     const gameBoard = document.querySelector('.gameOne');
 
-    const gameBattle = new GameBuilder(gameBoard);
-    const gameController = new GameController(gameBattle);
+    const gameBuilder = new GameBuilder(gameBoard);
+    const gameController = new GameController(gameBuilder);
 
-    gameBattle.fillInputs(gameController.randomPerson());
+    gameBuilder.fillInputs(gameController.randomPerson());
 
     gameBoard.querySelector('#startBattle').addEventListener('click', gameController.startBattle);
     gameBoard.querySelector('#addToTeam').addEventListener('click', () => {
-        const rawPerson = gameBattle.readInputs();
+        const rawPerson = gameBuilder.readInputs();
         const newPerson = gameController.addToTeam(rawPerson.name, rawPerson.strength, rawPerson.weapon, undefined, rawPerson.selectedTeam);
-        gameBattle.addPersonToBoard(newPerson, rawPerson.selectedTeam);
-        gameBattle.fillInputs(gameController.randomPerson())
+        gameBuilder.addPersonToBoard(newPerson, rawPerson.selectedTeam);
+        gameBuilder.fillInputs(gameController.randomPerson())
     });
 
-    gameBattle.readLocalStorage(gameController.addToTeam);
+    gameBuilder.readLocalStorage(gameController.addToTeam);
 
 }
 
